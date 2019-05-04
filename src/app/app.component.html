@@ -1,3 +1,38 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane >
+    <!--  our side menu  -->
+    <ion-menu #menu side="start" id="main-menu">
+      <ion-header>
+        <div class="header-sidebar">
+          <div class="logo"><img src="assets/img/side-logo.png"></div>
+          <ion-text><h3 class="name">امین تکمیلی فرد</h3></ion-text>
+          <ion-text><p class="phone">09366155445</p></ion-text>
+          <ion-text><p class="code">کد : 10058684</p></ion-text>
+          <ion-text><span class="version"> نسخه ی : 9.2.2 عمومی</span></ion-text>
+        </div>
+      </ion-header>
+      <ion-content>
+        <ion-list lines="full" class="p-0 menu-links">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" animated [routerLink]="[p.url]" routerLinkActive="active-link" detail>
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+      <ion-footer>
+          <ion-item class="logout-btn" lines="full">
+            <ion-icon slot="start" name="exit"></ion-icon>
+            <ion-label>خروج</ion-label>
+          </ion-item>
+      </ion-footer>
+    </ion-menu>
+
+    <!-- the main content -->
+    <ion-router-outlet main></ion-router-outlet>
+
+  </ion-split-pane>
 </ion-app>

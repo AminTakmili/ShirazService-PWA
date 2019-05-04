@@ -1,0 +1,41 @@
+<ion-header class="ion-hide-lg-up">
+    <ion-toolbar>
+        <ion-title>شیراز سرویس</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content" ion-padding>
+    <h1 class="lg-title mb-30 mx-10">شیراز سرویس</h1>
+    <!--===========================================================-->
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-slides pager="true" [options]="slideOpts" class="homeSlider ">
+                    <ion-slide>
+                        <img src="assets/test/slider/1.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="assets/test/slider/2.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="assets/test/slider/3.jpg">
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!--===========================================================-->
+    <ion-grid>
+        <ion-row>
+            <ion-col *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12]" size-md="3" size-sm="4" size="6">
+                <ion-card class="ion-no-padding ion-no-margin bg-white service-card">
+                    <ion-card-content>
+                        <ion-ripple-effect></ion-ripple-effect>
+                        <div class="img"><img src="assets/test/icon/{{item}}.png"></div>
+                        <div class="name">نام خدمات</div>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

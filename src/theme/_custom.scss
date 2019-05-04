@@ -1,0 +1,63 @@
+
+@font-face {
+	font-family: iransans;
+	font-style: normal;
+	font-weight: 900;
+	src:url('../assets/fonts/iransans/IRANSansWeb(FaNum)_Black.woff2') format('woff2');
+
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: bold;
+	src:url('../assets/fonts/iransans/IRANSansWeb(FaNum)_Bold.woff2') format('woff2');
+
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: 500;
+	src:url('../assets/fonts/iransans/IRANSansWeb(FaNum)_Medium.woff2') format('woff2');
+
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: 300;
+	src:url('../assets/fonts/iransans/IRANSansWeb(FaNum)_Light.woff2') format('woff2');
+		 
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: 200;
+	src:url('../assets/fonts/iransans/IRANSansWeb(FaNum)_UltraLight.woff2') format('woff2');
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: normal;
+	src:url('../assets/fonts/iransans/IRANSansWeb(FaNum).woff2') format('woff2');
+}
+
+/*===========================*/
+
+
+.service-card{
+	.img{
+		img{
+			width: 80px;
+			height: 80px;
+			object-fit: contain;
+			object-position: center;
+			display: block;
+			margin: 20px auto;
+		}
+	}
+	.name{
+		font-size: 1.1rem;
+		text-align: center;
+		font-weight: 500;
+
+	}
+}
