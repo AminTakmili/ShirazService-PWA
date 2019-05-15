@@ -2,9 +2,85 @@
     <ion-toolbar>
         <ion-title>درخواست های من</ion-title>
     </ion-toolbar>
+    <ion-segment scrollable mode="md">
+        <ion-segment-button checked layout="icon-start">
+            <ion-label>آمار کلی</ion-label>
+            <ion-icon name="pie"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>در انتظار متخصص</ion-label>
+            <ion-icon name="time"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>منتظر تایید</ion-label>
+            <ion-icon name="hammer"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>پذیرفته شده</ion-label>
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>خاتمه یافته</ion-label>
+            <ion-icon name="done-all"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>لغو شده</ion-label>
+            <ion-icon name="pin"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
 </ion-header>
 
 <ion-content class="page-content" ion-padding>
     <h1 class="lg-title mb-30 mx-10">درخواست های من</h1>
+    <!-- Scrollable Segment -->
+    <ion-segment scrollable class="ion-hide-md-down" mode="md">
+        <ion-segment-button checked layout="icon-start">
+            <ion-label>آمار کلی</ion-label>
+            <ion-icon name="pie"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>در انتظار متخصص</ion-label>
+            <ion-icon name="time"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>منتظر تایید</ion-label>
+            <ion-icon name="hammer"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>پذیرفته شده</ion-label>
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>خاتمه یافته</ion-label>
+            <ion-icon name="done-all"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start">
+            <ion-label>لغو شده</ion-label>
+            <ion-icon name="pin"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+    <!--====================================================-->
+    <div class="tab-content">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-lg="12">
+                    <div class="tabs-item">
+                            <div [chart]="chart" ></div>
+                        <!-- <div dir="ltr" style="direction: ltr">
+                            <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                                style="width: 100%; height: 350px; display: block;direction: ltr"></highcharts-chart>
+                        </div> -->
+                    </div>
+                </ion-col>
+                <ion-col size-lg="12">
 
+                </ion-col>
+                <ion-col>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </div>
+    <!--====================================================-->
 </ion-content>

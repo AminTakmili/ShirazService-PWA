@@ -1,0 +1,21 @@
+ion-header{
+    ion-segment{
+        --background:var(--color-grey);
+        --border-color : var(--ion-color-white);
+        --background-checked :var(--color-grey);
+        --background-activated:var(--color-grey);
+        --background-hover:var(--color-grey);
+        --color:#a8a8a8;
+        --color-activated:#fff;
+        --color-checked:#fff;
+    }
+    
+}
+ion-content{
+    ion-segment{
+        --border-color : var(--color-red);
+        --color:#7c7c7c;
+        --color-activated:var(--color-red);
+        --color-checked:var(--color-red);
+    }
+}

@@ -120,3 +120,18 @@ ion-searchbar {
         }
     }
 }
+.tab-content{
+    .highcharts-container {
+        tspan{
+            stroke-width: 0px;
+            fill: rgb(51, 51, 51);
+            stroke: rgb(73, 73, 73);
+        }
+        .highcharts-background{
+            fill: rgba(255, 255, 255,0);
+        }
+        .highcharts-legend-item {
+            margin-bottom:10px;
+        }
+    }
+}
