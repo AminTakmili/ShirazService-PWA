@@ -1,5 +1,5 @@
 import { Chart } from 'angular-highcharts';
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild ,ElementRef } from '@angular/core';
 import { IonSlides } from '@ionic/angular'; 
 @Component({
   selector: 'app-myrequest',
@@ -8,8 +8,16 @@ import { IonSlides } from '@ionic/angular';
 })
 export class MyrequestPage implements OnInit {
 
-  @ViewChild("Slides") slides: IonSlides;
-
+  @ViewChild('slides') slides: IonSlides;
+  @ViewChild('segment') segment: ElementRef;
+  segmentStatus = [
+    {id:0,name:'آمار کلی',icon:'pie'},
+    {id:1,name:'در انتظار متخصص',icon:'time'},
+    {id:2,name:'منتظر تایید',icon:'hammer'},
+    {id:3,name:'پذیرفته شده',icon:'checkmark'},
+    {id:4,name:'خاتمه یافته',icon:'done-all'},
+    {id:5,name:'لغو شده',icon:'pin'},
+  ]
   chart: Chart;
   segmentSelected:any = 0;
   constructor() { }
@@ -86,11 +94,63 @@ export class MyrequestPage implements OnInit {
   //     watchSlidesVisibility: true,
   //     watchSlidesProgress: true,
   // };
-  segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
-    this.segmentSelected = ev.detail.value;
+  pos = 0;
+  async ionSelect(index: number) {
+    if (index > await this.slides.getActiveIndex()) {
+      let id = setInterval(() => {
+        if (this.pos == 180) {
+          clearInterval(id);
+          this.pos = 0;
+        } else {
+          this.pos++;
+          this.segment['el'].scrollLeft--;
+        }
+      }, 1);
+    } else {
+      let id = setInterval(() => {
+        if (this.pos == 180) {
+          clearInterval(id);
+          this.pos = 0;
+        } else {
+          this.pos++;
+          this.segment['el'].scrollLeft++;
+        }
+      }, 1);
+    }
+
+    this.slides.slideTo(index);
   }
+
+  async ionSlideWillChange() {
+    if (parseInt(this.segmentSelected) > await this.slides.getActiveIndex()) {
+      let id = setInterval(() => {
+        if (this.pos == 180) {
+          clearInterval(id);
+          this.pos = 0;
+        } else {
+          this.pos++;
+          this.segment['el'].scrollLeft++;
+        }
+      }, 1);
+    } else {
+      let id = setInterval(() => {
+        if (this.pos == 180) {
+          clearInterval(id);
+          this.pos = 0;
+        } else {
+          this.pos++;
+          this.segment['el'].scrollLeft--;
+        }
+      }, 1);
+    }
+    if (await this.slides.getActiveIndex() <= this.segmentStatus.length ) {
+      this.segmentSelected = await this.slides.getActiveIndex();
+      
+    }
+  }
+
   ngOnInit() {
   }
 
 }
+

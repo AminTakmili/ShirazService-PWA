@@ -9,4 +9,14 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import '~leaflet/dist/leaflet.css';
 
+.leaflet-top .leaflet-control {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.leaflet-top {
+    top: initial;
+    bottom: 0px;
+}

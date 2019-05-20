@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'search', loadChildren: './pages/search/search.module#SearchPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'more', loadChildren: './pages/more/more.module#MorePageModule' },
-  { path: 'myrequest', loadChildren: './pages/myrequest/myrequest.module#MyrequestPageModule' }
+  { path: 'myrequest', loadChildren: './pages/myrequest/myrequest.module#MyrequestPageModule' },
 ];
 @NgModule({
   imports: [

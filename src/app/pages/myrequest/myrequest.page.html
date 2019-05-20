@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-title>درخواست های من</ion-title>
     </ion-toolbar>
-    <ion-segment scrollable mode="md" #SegmentButton (ionChange)="segmentChanged($event)" [value]="segmentSelected">
+    <ion-segment scrollable mode="md"  >
         <ion-segment-button layout="icon-start" href="#total" value="0">
             <ion-label>آمار کلی</ion-label>
             <ion-icon name="pie"></ion-icon>
@@ -33,36 +33,15 @@
 <ion-content class="page-content" ion-padding scrollX="false">
     <h1 class="lg-title mb-30 mx-10">درخواست های من</h1>
     <!-- Scrollable Segment -->
-    <ion-segment scrollable class="ion-hide-md-down" mode="md" (ionChange)="segmentChanged($event)"
-        [value]="segmentSelected">
-        <ion-segment-button layout="icon-start" href="#total" value="0">
-            <ion-label>آمار کلی</ion-label>
-            <ion-icon name="pie"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#waitingforExpert" value="1">
-            <ion-label>در انتظار متخصص</ion-label>
-            <ion-icon name="time"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#waiting" value="2">
-            <ion-label>منتظر تایید</ion-label>
-            <ion-icon name="hammer"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#actived" value="3">
-            <ion-label>پذیرفته شده</ion-label>
-            <ion-icon name="checkmark"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#finished" value="4">
-            <ion-label>خاتمه یافته</ion-label>
-            <ion-icon name="done-all"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#canceled" value="5">
-            <ion-label>لغو شده</ion-label>
-            <ion-icon name="pin"></ion-icon>
+    <ion-segment scrollable #segment class="ion-hide-md-down" mode="md" [value]="segmentSelected">
+        <ion-segment-button *ngFor="let item of segmentStatus" layout="icon-start" href="#total"  (ionSelect)="ionSelect(item.id)" value="{{item.id}}">
+            <ion-label>{{item.name}}</ion-label>
+            <ion-icon name="{{item.icon}}"></ion-icon>
         </ion-segment-button>
     </ion-segment>
     <!--====================================================-->
     <div class="tab-content">
-        <ion-slides pager="false" [options]="SlideOrders" #Slides>
+        <ion-slides pager="false" [options]="SlideOrders" #slides (ionSlideWillChange)="ionSlideWillChange()" >
             <ion-slide>
                 <ion-grid>
                     <ion-row>
@@ -94,8 +73,7 @@
                                         <span class="time">{{item}} دقیقه پیش</span>
                                     </div>
                                     <div class="StatusPriority">
-                                        <span class="Priority Priority-1"> پایین <i
-                                                class="ion ion-md-arrow-dropdown"></i>
+                                        <span class="Priority Priority-1"> پایین <i class="ion ion-md-arrow-dropdown"></i>
                                         </span>
                                         <span class="status status-1">در انتظار متخصص</span>
                                     </div>
@@ -126,8 +104,7 @@
                                         <span class="time">{{item}} دقیقه پیش</span>
                                     </div>
                                     <div class="StatusPriority">
-                                        <span class="Priority Priority-2"> پایین <i
-                                                class="ion ion-md-arrow-dropdown"></i>
+                                        <span class="Priority Priority-2"> متوسط <i class="ion ion-ios-arrow-down"></i>
                                         </span>
                                         <span class="status status-2">منتظر تایید</span>
                                     </div>
@@ -157,8 +134,7 @@
                                         <span class="time">{{item}} دقیقه پیش</span>
                                     </div>
                                     <div class="StatusPriority">
-                                        <span class="Priority Priority-3"> پایین <i
-                                                class="ion ion-md-arrow-dropdown"></i>
+                                        <span class="Priority Priority-3"> زیاد <i class="ion ion-ios-arrow-up"></i>
                                         </span>
                                         <span class="status status-3">پذیرفته شده</span>
                                     </div>
@@ -170,9 +146,9 @@
                 </div>
             </ion-slide>
             <ion-slide>
-                <!-- <div class="stepEmpty">
-            <img src="assets/img/step-empty.png">
-        </div> -->
+            <!-- <div class="stepEmpty">
+                <img src="assets/img/step-empty.png">
+            </div> -->
                 <div class="w-100">
                     <ion-card *ngFor="let item of [30,1,13,14,5,16,7,18,19,20,1,2]" color="white"
                         class="ion-activatable step-item">
@@ -189,15 +165,12 @@
                                         <span class="time">{{item}} دقیقه پیش</span>
                                     </div>
                                     <div class="StatusPriority">
-                                        <span class="Priority Priority-4"> پایین <i
-                                                class="ion ion-md-arrow-dropdown"></i>
-                                        </span>
+                                        <span class="Priority Priority-4"> فوری <i class="ion ion-md-arrow-dropup"></i></span>
                                         <span class="status status-4">خاتمه یافته</span>
                                     </div>
                                 </ion-label>
                             </ion-item>
                         </ion-card-content>
-
                     </ion-card>
                 </div>
             </ion-slide>

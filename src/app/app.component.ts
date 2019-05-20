@@ -22,9 +22,7 @@ export class AppComponent {
 		{ title: 'درخواست های من', url: '/page/myrequest', icon: 'construct' },
 		{ title: 'پروفایل', url: '/page/profile', icon: 'person' },
 		{ title: 'بیشتر', url: '/page/more', icon: 'more' },
-		// { title: 'More ', url: '/more', icon: 'more' },
-		// {title: 'Terms',url: '/Terms',icon: 'checkmark-circle-outline'} ,
-		// {title: 'Rate',url: '/Rate',icon: 'star'} ,
+
 	];
 
   initializeApp() {

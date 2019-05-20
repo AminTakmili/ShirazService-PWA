@@ -71,8 +71,12 @@ ion-content{
             font-size: 12px;
             &.Priority-1{ color:var(--color-green);}
             &.Priority-2{ color:var(--color-blue);}
-            &.Priority-3{ color:var(--color-color-yelllow-1);}
+            &.Priority-3{ color:var(--ion-color-yelllow-1);}
             &.Priority-4{ color:var(--color-red);} 
+            i{
+                vertical-align: bottom;
+                margin-right: 5px;
+            }
         }
         .status{
             font-size: 12px;
@@ -100,4 +104,7 @@ ion-content{
             }
         }
     }
+}
+ion-segment-button{
+    width: 180px;
 }
