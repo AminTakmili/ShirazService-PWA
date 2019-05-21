@@ -16,7 +16,7 @@
 	<ion-list class="bg-white p-0 m-0">
 		<ion-item class="bg-white">
 			<ion-label>انتخاب محله</ion-label>
-			<ion-select value="brown" okText="Okay" cancelText="Dismiss">
+			<ion-select value="brown" okText="انتخاب" cancelText="لغو">
 				<ion-select-option value="brown">محله</ion-select-option>
 				<ion-select-option value="blonde">محله</ion-select-option>
 				<ion-select-option value="black">محله</ion-select-option>
@@ -81,15 +81,23 @@
 	</ion-item>
 
 
-	<div class="mx-8 mb-8 mt-30">
-		<ion-button routerLink="/page/home/request-service/step-2" color="green" class="btn-height-45 ion-hide-md-down">
-			ثبت و ادامه</ion-button>
-	</div>
+	<ion-grid class="mt-30" no-padding>
+		<ion-row align-items-center justify-content-between no-padding>
+			<ion-col size="4">
+				<ion-button routerLink="/page/home/request-service/step-1" expand="block" color="grey-3"
+					class="btn-height-45 ion-hide-md-down"> بازگشت </ion-button>
+			</ion-col>
+			<ion-col size="6">
+				<ion-button routerLink="/page/home/request-service/step-3" expand="block" color="green"
+					class="btn-height-45 ion-hide-md-down mr-10"> ثبت و ادامه</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 	<!--===========================================================-->
 </ion-content>
 <ion-footer class="bg-white ion-hide-lg-up">
 	<div class="p-8">
-		<ion-button routerLink="/page/home/request-service/step-2" expand="full" color="green" class="btn-height-45">ثبت
+		<ion-button routerLink="/page/home/request-service/step-3" expand="full" color="green" class="btn-height-45">ثبت
 			و
 			ادامه </ion-button>
 	</div>

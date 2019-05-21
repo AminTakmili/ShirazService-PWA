@@ -86,14 +86,9 @@ export class MyrequestPage implements OnInit {
     initialSlide: 0,
     speed: 400,
     autoHeight:true,
+    zoom: false
   };
-  // Segment = {
-  //    spaceBetween: 0,
-  //     slidesPerView: "auto",
-  //     freeMode: true,
-  //     watchSlidesVisibility: true,
-  //     watchSlidesProgress: true,
-  // };
+
   pos = 0;
   async ionSelect(index: number) {
     if (index > await this.slides.getActiveIndex()) {
@@ -117,7 +112,6 @@ export class MyrequestPage implements OnInit {
         }
       }, 1);
     }
-
     this.slides.slideTo(index);
   }
 
@@ -149,8 +143,7 @@ export class MyrequestPage implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
 }
 

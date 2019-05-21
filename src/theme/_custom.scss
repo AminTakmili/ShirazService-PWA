@@ -393,3 +393,154 @@ ion-searchbar {
     -webkit-transform-origin: right top;
     transform-origin: right top;
 }
+
+.rate {
+    $start-not-active: #9e9e9e;
+    $start-active: #FCC44B;
+    direction: rtl;
+    i {
+        display: inline-block;
+        color: $start-active;
+        &:before {
+            content: "\f4b3";
+            display: inline-block;
+            font-family: "Ionicons";
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            text-rendering: auto;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+    }
+    &[rate="0"] {
+        i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="1"] {
+        i:nth-child(1)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="2"] {
+        i:nth-child(2)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="3"] {
+        i:nth-child(3)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="4"] {
+        i:nth-child(4)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="5"] {
+        i:nth-child(5)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="0.5"],
+    &[rate=".5"] {
+        i:nth-child(1) {
+            &:before {
+                content: "\f4b1";
+                transform: scaleX(-1);
+                filter: FlipH;
+            }
+        }
+        i:nth-child(1)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="1.5"],
+    &[rate="1.5"] {
+        i:nth-child(2) {
+            &:before {
+                content: "\f4b1";
+                transform: scaleX(-1);
+                filter: FlipH;
+            }
+        }
+        i:nth-child(2)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="2.5"],
+    &[rate="2.5"] {
+        i:nth-child(3) {
+            &:before {
+                content: "\f4b1";
+                transform: scaleX(-1);
+                filter: FlipH;
+            }
+        }
+        i:nth-child(3)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="3.5"],
+    &[rate="3.5"] {
+        i:nth-child(4) {
+            &:before {
+                content: "\f4b1";
+                transform: scaleX(-1);
+                filter: FlipH;
+            }
+        }
+        i:nth-child(4)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+    &[rate="4.5"],
+    &[rate="4.5"] {
+        i:nth-child(5) {
+            &:before {
+                content: "\f4b1";
+                transform: scaleX(-1);
+                filter: FlipH;
+            }
+        }
+        i:nth-child(5)~i {
+            color: $start-not-active;
+            &:before {
+                content: "\f4b2";
+            }
+        }
+    }
+}

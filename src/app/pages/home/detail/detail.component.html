@@ -1,5 +1,8 @@
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
     <ion-title>جزییات سرویس</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -82,7 +85,12 @@
     </ion-card-content>
   </ion-card>
   <!--===========================================================-->
-  <div class="mx-8 mb-8">
-    <ion-button  routerLink="/page/home/request-service/step-1"  expand="full" color="green" class="addService">درخواست این خدمت</ion-button>
+  <div class="mx-8 mb-8"> <ion-button  routerLink="/page/home/request-service/step-1"  expand="full" color="green" class="addService ion-hide-md-down">درخواست این خدمت</ion-button>
   </div>
 </ion-content>
+<ion-footer class="bg-white ion-hide-lg-up">
+    <div class="p-8">
+      <ion-button routerLink="/page/home/request-service/step-1" expand="full" color="green" class="btn-height-45">
+        درخواست این خدمت</ion-button>
+    </div>
+  </ion-footer>

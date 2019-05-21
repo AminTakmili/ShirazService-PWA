@@ -20,7 +20,6 @@ export class Step2Component implements OnInit {
 			})
     ],
 	};
-  constructor() { }
-
+  constructor(){}
   ngOnInit() {}
  }

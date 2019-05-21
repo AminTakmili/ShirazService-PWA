@@ -1,15 +1,54 @@
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar>
-      <ion-title>شیراز سرویس</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>مرحله چهارم - بررسی اطلاعات</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content class="page-content" ion-padding>
-  <h1 class="lg-title mb-30 mx-10">شیراز سرویس</h1>
-  <!--===========================================================-->
+	<h1 class="lg-title mb-30 mx-10">مرحله چهارم - بررسی اطلاعات </h1>
 
-  <!--===========================================================-->
+	<!--===========================================================-->
+	<ion-text>
+		<h5 class="px-10 color-grey-3">اطلاعات سرویس گیرنده</h5>
+	</ion-text>
+	<ion-list class="bg-white py-0">
+		<ion-item>
+			<ion-label><strong>نام و نام خانوادگی</strong> امین تکمیلی فرد </ion-label>
+		</ion-item>
+		<ion-item>
+				<ion-label><strong>شماره ثابت</strong> 07132358797 </ion-label>
+		</ion-item>
+		<ion-item>
+				<ion-label><strong>شماره همراه</strong> 09366155455 </ion-label>
+		</ion-item>
+		<ion-item>
+				<ion-label><strong>محدوده سفارش : </strong> چمران </ion-label>
+		</ion-item>
+	</ion-list>
+	<!--===========================================================-->
 
-  <!--===========================================================-->
+	<ion-grid class="mt-30 ion-hide-md-down" no-padding>
+		<ion-row align-items-center justify-content-between no-padding>
+			<ion-col size="4" no-padding>
+				<ion-button routerLink="/page/home/request-service/step-3" expand="block" color="grey-3"
+					class="btn-height-45 ion-hide-md-down"> بازگشت </ion-button>
+			</ion-col>
+			<ion-col size="6" no-padding>
+				<ion-button routerLink="/page/home/request-service/step-5" expand="block" color="green"
+					class="btn-height-45 ion-hide-md-down mr-10"> ثبت و ادامه</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 
+	<!--===========================================================-->
 </ion-content>
+<ion-footer class="bg-white ion-hide-lg-up">
+	<div class="p-8">
+		<ion-button routerLink="/page/home/request-service/step-4" expand="full" color="green" class="btn-height-45">ثبت
+			و
+			ادامه </ion-button>
+	</div>
+</ion-footer>
