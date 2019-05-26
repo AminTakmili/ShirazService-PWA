@@ -17,10 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule, 
     IonicModule.forRoot(),
     AppRoutingModule,
-    // IonicModule.forRoot({
-    //   rippleEffect: false,
-    //   mode: 'md'
-    // }),
+
   ],
   providers: [
     StatusBar,

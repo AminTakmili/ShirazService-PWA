@@ -1,0 +1,63 @@
+<ion-header class="ion-hide-lg-up">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>ویرایش اطلاعات</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="page-content ">
+    <h1 class="lg-title mb-30 mx-10">ویرایش اطلاعات</h1>
+    <!--===========================================================-->
+    <ion-list class="px-8">
+        <ion-item>
+            <ion-label position="floating">نام</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">نام خانوادگی</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">تلفن ثابت</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">پست الکترونیک</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item class="bg-white mt-30">
+            <ion-label>انتخاب محله</ion-label>
+            <ion-select okText="انتخاب کنید" cancelText="لغو">
+                <ion-select-option value="brown">محله</ion-select-option>
+                <ion-select-option value="blonde">محله</ion-select-option>
+                <ion-select-option value="black">محله</ion-select-option>
+                <ion-select-option value="red">محله</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">آدرس دقیق</ion-label>
+            <ion-textarea></ion-textarea>
+        </ion-item>
+    </ion-list>
+    <!-- btn -->
+    <ion-grid class="mt-30">
+        <ion-row align-items-center justify-content-between no-padding>
+            <ion-col size="4">
+                <ion-button routerLink="/page/profile" expand="block" color="grey-3"
+                    class="btn-height-45 ion-hide-md-down"> بازگشت </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button routerLink="/page/profile" expand="block" color="green"
+                    class="btn-height-45 ion-hide-md-down mr-10"> ویرایش </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!--===========================================================-->
+</ion-content>
+<ion-footer class="bg-white ion-hide-lg-up">
+    <div class="p-8">
+        <ion-button routerLink="/page/home/request-service/step-3" expand="full" color="green" class="btn-height-45">
+            ویرایش </ion-button>
+    </div>
+</ion-footer>

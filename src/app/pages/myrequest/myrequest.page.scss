@@ -1,3 +1,4 @@
+@import '~src/theme/_mixins.scss';
 ion-header{
     ion-segment{
         --background:var(--color-grey);
@@ -38,7 +39,7 @@ ion-content{
     }
 }
 .order{
-    padding: 10px 0;
+    padding: 0;
     .name{
         font-size: 16px;
         font-weight: 500;
@@ -68,7 +69,8 @@ ion-content{
         width: 100%;
 
         .Priority{
-            font-size: 12px;
+            font-size: 10px;
+            font-weight: 500;
             &.Priority-1{ color:var(--color-green);}
             &.Priority-2{ color:var(--color-blue);}
             &.Priority-3{ color:var(--ion-color-yelllow-1);}

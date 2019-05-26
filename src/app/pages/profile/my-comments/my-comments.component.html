@@ -1,0 +1,24 @@
+<ion-header class="ion-hide-lg-up">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>نظر های من </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="page-content " ion-padding>
+        <ion-button class="ion-hide-md-down" nav-pop routerLink=".." color="medium" fill="clear"> بازگشت <ion-icon
+            slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+    <h1 class="lg-title mb-30 mx-10">نظر های من</h1>
+    <!--===========================================================-->
+    <ion-list  class="bg-white mb-75 mt-0 py-0 px-0">
+        <ion-item *ngFor="let item of [1,2,3,4,5,6,7]"  button="true" detail>
+            <ion-label>
+                <h3>لورم ایپسوم متن ساختگی با تولید سادگی</h3>
+                <p>مربوط به قلان</p>
+                <p><small>24 خرداد 1396 ساعت 20:30</small> </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

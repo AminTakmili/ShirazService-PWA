@@ -1,0 +1,56 @@
+<ion-header class="ion-hide-lg-up">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>نواحی تحت پوشش متخصص</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="page-content px-8">
+	<h1 class="lg-title mb-30 mx-10">نواحی تحت پوشش متخصص</h1>
+	<p class="px-8">
+		<ion-text>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و
+			متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
+			متنوع با هدف بهبود ابزارهای کاربردی می باشد</ion-text>
+	</p>
+	<!--===========================================================-->
+	<ion-list class="px-8">
+		<ion-item class="mt-30 px-8">
+			<ion-label>محدوده کار</ion-label>
+			<ion-select okText="انتخاب کنید" cancelText="لغو">
+				<ion-select-option value="brown">محله</ion-select-option>
+				<ion-select-option value="blonde">محله</ion-select-option>
+				<ion-select-option value="black">محله</ion-select-option>
+				<ion-select-option value="red">محله</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">آدرس</ion-label>
+			<ion-input></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">توضیحات</ion-label>
+			<ion-textarea></ion-textarea>
+		</ion-item>
+	</ion-list>
+	<ion-grid class="mt-30" no-padding>
+		<ion-row align-items-center justify-content-between no-padding>
+			<ion-col size="4">
+				<ion-button routerLink="/page/profile/expert-introduction/experience" expand="block" color="grey-3"
+					class="btn-height-45 ion-hide-md-down">
+					بازگشت </ion-button>
+			</ion-col>
+			<ion-col size="6">
+				<ion-button routerLink="/page/profile" expand="block" color="green"
+					class="btn-height-45 ion-hide-md-down mr-10"> ثبت </ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<!--===========================================================-->
+</ion-content>
+<ion-footer class="bg-white ion-hide-lg-up">
+	<div class="p-8">
+		<ion-button routerLink="/page/profile/expert-introduction/experience" expand="full" color="green"
+			class="btn-height-45">ثبت</ion-button>
+	</div>
+</ion-footer>

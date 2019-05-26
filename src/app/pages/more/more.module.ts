@@ -6,11 +6,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MorePage } from './more.page';
+import { SocialNetworkComponent } from './social-network/social-network.component';
+
 
 const routes: Routes = [
   {
     path: '',
     component: MorePage
+  },
+  {
+    path : 'social-network',
+    component : SocialNetworkComponent
   }
 ];
 
@@ -21,6 +27,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MorePage]
+  declarations: [MorePage,SocialNetworkComponent]
 })
 export class MorePageModule {}

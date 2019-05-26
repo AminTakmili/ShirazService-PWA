@@ -6,3 +6,11 @@ ion-thumbnail{
     --border-radius:50%;
     --size:50px;
 }
+
+ion-item{
+    --ripple-color:var(--color-grey);
+    ion-icon {
+        -webkit-margin-end: 16px;
+        margin-inline-end: 16px;
+    }
+}

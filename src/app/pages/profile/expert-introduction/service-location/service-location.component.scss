@@ -1,0 +1,4 @@
+@import '~src/theme/_mixins.scss';
+ion-input,ion-item{
+    --padding-start:0 !important;
+}
