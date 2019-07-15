@@ -1,0 +1,43 @@
+<ion-header class="ion-hide-lg-up">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>تایید شماره همراه</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content" ion-padding>
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> تغییر شماره <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>تایید شماره همراه</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			<form [formGroup]="verifyForm" (ngSubmit)="onVerify()" autocomplete="off">
+				<ion-grid>
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="floating">کد فعال سازی</ion-label>
+								<ion-input type="text" formControlName="cofirmationCode"></ion-input>
+							</ion-item>
+							<app-validator [control]="verifyForm.controls['cofirmationCode']"
+								[controlName]="'کد فعال سازی'"></app-validator>
+						</ion-col>
+						<ion-col size-md="6" size="12">
+							<ion-button color="primary" type="submit" expand="full" [disabled]="!verifyForm.valid">تایید
+								ورود
+							</ion-button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

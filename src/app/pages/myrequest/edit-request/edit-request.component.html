@@ -1,191 +1,103 @@
 <ion-header class="ion-hide-lg-up">
 	<ion-toolbar>
 		<ion-buttons slot="start">
-			<ion-back-button></ion-back-button>
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
 		</ion-buttons>
 		<ion-title>ویرایش درخواست</ion-title>
 	</ion-toolbar>
 </ion-header>
 <ion-content class="page-content " ion-padding>
-		<ion-button class="ion-hide-md-down" nav-pop routerLink=".." color="medium" fill="clear"> بازگشت <ion-icon
-            slot="start" name="arrow-back"></ion-icon>
-    </ion-button>
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
 	<h1 class="lg-title mb-30 mx-10">ویرایش درخواست</h1>
 	<!--===========================================================-->
-	<ion-card color="white" class="service-name my-0 ion-activatable">
+	<ion-card color="white">
 		<ion-card-content>
-			<ion-item lines="none">
-				<ion-thumbnail slot="start">
-					<img src="assets/test/icon/10.png">
-				</ion-thumbnail>
-				<ion-label>
-					<h2 class="name">عنوان شغل</h2>
-					<p class="desc" text-wrap>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-						طراحان
-						گرافیک است</p>
-				</ion-label>
+			<ion-text>
+				<h2 class="desc-header mb-15">محل اجرای درخواست</h2>
+			</ion-text>
+			<ion-item class="bg-white" lines="full">
+				<ion-label>محدوده آدرس</ion-label>
+				<ionic-selectable #area [items]="areas" itemValueField="areaId" itemTextField="areaTitle"
+					searchPlaceholder="جستجو..." [searchFailText]="'محدوده یافت نشد.'" placeholder="انتخاب کنید"
+					[canSearch]="true" (onChange)="areaChange($event)">
+		
+					<ng-template ionicSelectableHeaderTemplate>
+						<ion-header>
+							<ion-toolbar>
+								<ion-buttons slot="start">
+									<ion-button color="white" (click)="area.close()">
+										<ion-icon slot="icon-only" name="close"></ion-icon>
+									</ion-button>
+								</ion-buttons>
+								<ion-title>{{area.label}}</ion-title>
+							</ion-toolbar>
+						</ion-header>
+					</ng-template>
+					<ng-template ionicSelectableItemTemplate let-area="item">
+						<div class="select-title">
+							<ion-icon slot="icon-only" name="pin"></ion-icon>
+							{{area.areaTitle}}
+						</div>
+					</ng-template>
+				</ionic-selectable>
 			</ion-item>
-		</ion-card-content>
-	</ion-card>
-	<!--===========================================================-->
-	<ion-card color="white">
-		<ion-card-content>
-			<ion-text color='blue'><strong>در انتظار ارایه دهنده ی خدمات</strong></ion-text>
-		</ion-card-content>
-	</ion-card>
-
-	<!--===========================================================-->
-	<ion-card color="white">
-		<ion-card-content>
-			<ion-text>
-				<h2 class="desc-header mb-15">درجه اهمیت درخواست خود را انتخاب کنید</h2>
-			</ion-text>
-			<ion-list class="bg-white p-0 m-0">
-				<ion-radio-group>
-					<ion-item>
-						<ion-label>پایین</ion-label>
-						<ion-radio slot="start" value="1" color="green" checked></ion-radio>
-					</ion-item>
-					<ion-item>
-						<ion-label>متوسط</ion-label>
-						<ion-radio slot="start" value="2" color="green"></ion-radio>
-					</ion-item>
-					<ion-item>
-						<ion-label>بالا</ion-label>
-						<ion-radio slot="start" value="3" color="green"></ion-radio>
-					</ion-item>
-					<ion-item lines="none">
-						<ion-label>فوری</ion-label>
-						<ion-radio slot="start" value="4" color="green"></ion-radio>
-					</ion-item>
-				</ion-radio-group>
-			</ion-list>
-		</ion-card-content>
-	</ion-card>
-	<!--===========================================================-->
-	<ion-card color="white">
-		<ion-card-content>
-			<ion-text>
-				<h2 class="desc-header mb-15"> تاریخ و زمان درخواست کار </h2>
-			</ion-text>
-			<ion-item class="bg-white">
-				<ion-label>تاریخ شروع</ion-label>
-				<ion-datetime placeholder="انتخاب ساعت" display-format="MMM DD, YYYY" cancelText="لغو"
-					doneText="انتخاب">
-				</ion-datetime>
-			</ion-item>
-			<ion-item class="bg-white" lines="none">
-				<ion-label>تاریخ پایان</ion-label>
-				<ion-datetime placeholder="انتخاب ساعت" display-format="MMM DD, YYYY" cancelText="لغو"
-					doneText="انتخاب">
-				</ion-datetime>
-			</ion-item>
-		</ion-card-content>
-	</ion-card>
-	<!--===========================================================-->
-	<!--===========================================================-->
-	<ion-card color="white">
-		<ion-card-content>
-			<ion-text>
-				<h2 class="desc-header mb-15"> بازه ی زمان درخواست کار </h2>
-			</ion-text>
-			<ion-list class="bg-white py-0">
-				<ion-radio-group class="bg-white">
-					<ion-item>
-						<ion-label>ساعت 8 صبح الی 12 ظهر</ion-label>
-						<ion-radio slot="start" value="1" color="green" checked></ion-radio>
-					</ion-item>
-					<ion-item>
-						<ion-label>ساعت 12 ظهر الی 16 بعد از ظهر</ion-label>
-						<ion-radio slot="start" value="2" color="green"></ion-radio>
-					</ion-item>
-					<ion-item>
-						<ion-label>ساعت 16 بعد از ظهر الی 20 شب</ion-label>
-						<ion-radio slot="start" value="3" color="green"></ion-radio>
-					</ion-item>
-					<ion-item lines="none">
-						<ion-label>ساعت 20 الی 24 شب</ion-label>
-						<ion-radio slot="start" value="4" color="green"></ion-radio>
-					</ion-item>
-				</ion-radio-group>
-			</ion-list>
-		</ion-card-content>
-	</ion-card>
-	<!--===========================================================-->
-	<ion-card color="white">
-		<ion-card-content>
-			<ion-text>
-				<h2 class="desc-header mb-15">مکان دریافت خدمت</h2>
-			</ion-text>
-			<ion-list class="bg-white p-0 m-0">
-				<ion-item class="bg-white">
-					<ion-label>انتخاب محله</ion-label>
-					<ion-select value="brown" okText="انتخاب" cancelText="لغو">
-						<ion-select-option value="brown">محله</ion-select-option>
-						<ion-select-option value="blonde">محله</ion-select-option>
-						<ion-select-option value="black">محله</ion-select-option>
-						<ion-select-option value="red">محله</ion-select-option>
-					</ion-select>
-				</ion-item>
-			</ion-list>
 			<div class="map-block shadow">
-				<form class="search"><label><input type="text" #name placeholder="جستجو آدرس"></label>
+				<form class="search"><label><input type="text" #query placeholder="جستجو آدرس"></label>
 					<div class="icons">
 						<!-- Loading Map -->
-						<ion-spinner name="crescent" class="none"></ion-spinner>
-						<i class="ion ion-md-search"></i>
+						<ion-spinner name="crescent" *ngIf="loadingAddress"></ion-spinner>
+						<i class="ion ion-md-search" *ngIf="!loadingAddress"></i>
 					</div>
 				</form>
 				<!-- Rezult search -->
-				<div class="search-result none">
+				<div class="search-result" *ngIf="!loadingAddress && addresses.length !== 0">
 					<ion-list class="bg-white" class="p-0">
-						<ion-item color="white" lines="full">
+						<ion-item color="white" lines="full" *ngFor="let item of addresses" detail (click)="selectAddress(item)">
 							<ion-icon slot="start" name="pin"></ion-icon>
 							<ion-label>
-								<h5 class="name font-weight-500 mb-0">عنوان آدرس</h5>
-								<small class="dsec color-grey-4">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-									چاپ و با
-									استفاده از طراحان گرافیک است</small>
-							</ion-label>
-						</ion-item>
-						<ion-item color="white" lines="full">
-							<ion-icon slot="start" name="pin"></ion-icon>
-							<ion-label>
-								<h5 class="name font-weight-500 mb-0">عنوان آدرس</h5>
-								<small class="dsec color-grey-4">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-									چاپ و با
-									استفاده از طراحان گرافیک است</small>
-							</ion-label>
-						</ion-item>
-						<ion-item color="white" lines="full">
-							<ion-icon slot="start" name="pin"></ion-icon>
-							<ion-label>
-								<h5 class="name font-weight-500 mb-0">عنوان آدرس</h5>
-								<small class="dsec color-grey-4">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-									چاپ و با
-									استفاده از طراحان گرافیک است</small>
-							</ion-label>
-						</ion-item>
-						<ion-item color="white" lines="full">
-							<ion-icon slot="start" name="pin"></ion-icon>
-							<ion-label>
-								<h5 class="name font-weight-500 mb-0">عنوان آدرس</h5>
-								<small class="dsec color-grey-4">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-									چاپ و با
-									استفاده از طراحان گرافیک است</small>
+								<h5 class="name font-weight-500 mb-0">{{item?.name.split(",", 2)}}</h5>
+								<small class="dsec color-grey-4">{{item?.name.split(",") | slice:2}}</small>
 							</ion-label>
 						</ion-item>
 					</ion-list>
 				</div>
-				<div class="map" style="height: 300px;" leaflet [leafletOptions]="options" [leafletZoom]="zoom"
-					[leafletCenter]="center"></div>
-				<ion-fab-button color="primary">
-					<ion-icon name="locate"></ion-icon>
+				<div class="map" style="height: 300px;" (leafletMapReady)="onMapReady($event)" leaflet
+					[leafletOptions]="options" [leafletZoom]="zoom" [leafletCenter]="center"></div>
+				<ion-fab-button (click)="getLocation()" color="primary">
+					<ion-icon [class.rotating]="!locationFound" name="locate"></ion-icon>
 				</ion-fab-button>
 			</div>
 			<ion-item class="bg-white">
-				<ion-label position="floating">توضیحات مربوط به آدرس</ion-label>
-				<ion-textarea></ion-textarea>
+				<ion-label position="floating">آدرس دقیق محل درخواست</ion-label>
+				<ion-textarea [(ngModel)]="address"></ion-textarea>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+	<ion-card color="white">
+		<ion-card-content>
+			<ion-text>
+				<h2 class="desc-header mb-15"> تاریخ و زمان </h2>
+			</ion-text>
+			<ion-item lines="full" class="bg-white">
+				<ion-label position="stacked">تاریخ</ion-label>
+				<ion-select placeholder="انتخاب کنید" [(ngModel)]="dateId" interface="action-sheet" okText="انتخاب کنید"
+					cancelText="لغو">
+					<ion-select-option *ngFor="let item of pickerOptions" value="{{ item.value }}">{{ item.text }}</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item lines="full" class="bg-white">
+				<ion-label position="stacked">ساعت</ion-label>
+				<ion-select placeholder="انتخاب کنید" [(ngModel)]="time" interface="action-sheet" okText="انتخاب کنید"
+					cancelText="لغو">
+					<ion-select-option value="1">ساعت 8 الی 12</ion-select-option>
+					<ion-select-option value="2">ساعت 12 الی 16</ion-select-option>
+					<ion-select-option value="3">ساعت 16 الی 20</ion-select-option>
+					<ion-select-option value="4">ساعت 20 الی 24</ion-select-option>
+				</ion-select>
 			</ion-item>
 		</ion-card-content>
 	</ion-card>
@@ -193,22 +105,20 @@
 	<ion-card color="white">
 		<ion-card-content>
 			<ion-text>
-				<h2 class="desc-header mb-15">مشخصات دریافت کننده خدمت</h2>
+				<h2 class="desc-header mb-15">مشخصات دریافت کننده سرویس</h2>
 			</ion-text>
-			<ion-list class="bg-white py-0">
-				<ion-item>
-					<ion-label><strong>نام و نام خانوادگی</strong> امین تکمیلی فرد </ion-label>
-				</ion-item>
-				<ion-item>
-					<ion-label><strong>شماره ثابت</strong> 07132358797 </ion-label>
-				</ion-item>
-				<ion-item>
-					<ion-label><strong>شماره همراه</strong> 09366155455 </ion-label>
-				</ion-item>
-				<ion-item lines="none">
-					<ion-label><strong>محدوده سفارش : </strong> چمران </ion-label>
-				</ion-item>
-			</ion-list>
+			<ion-item class="bg-white" lines="full">
+				<ion-label position="floating">نام و نام خانوادگی</ion-label>
+				<ion-input [(ngModel)]="firstName"></ion-input>
+			</ion-item>
+			<ion-item class="bg-white" lines="full">
+				<ion-label position="floating">تلفن همراه</ion-label>
+				<ion-input [(ngModel)]="mobile"></ion-input>
+			</ion-item>
+			<ion-item class="bg-white" lines="full">
+				<ion-label position="floating">تلفن ثابت</ion-label>
+				<ion-input [(ngModel)]="phone"></ion-input>
+			</ion-item>
 		</ion-card-content>
 	</ion-card>
 	<!--===========================================================-->
@@ -217,24 +127,18 @@
 			<ion-text>
 				<h2 class="desc-header mb-15"> توضیحات مربوط به این درخواست </h2>
 			</ion-text>
-			<ion-list class="bg-white py-0">
-				<ion-item>
-					<ion-textarea clearOnEdit="true" rows="4" placeholder="توضیحات"></ion-textarea>
-				</ion-item>
-			</ion-list>
+			<ion-item class="bg-white">
+				<ion-label position="floating">توضیحات</ion-label>
+				<ion-textarea [(ngModel)]="desc" rows="4"></ion-textarea>
+			</ion-item>
 		</ion-card-content>
 	</ion-card>
 	<!--===========================================================-->
 	<ion-grid class="mt-30 ion-hide-md-down" no-padding>
 		<ion-row align-items-center justify-content-between no-padding>
-			<ion-col size="3">
-				<ion-button routerLink="/page/myrequest" expand="block" color="grey-3" class="btn-height-45 ion-hide-md-down"> بازگشت </ion-button>
-			</ion-col>
-			<ion-col size="3">
-				<ion-button routerLink="/page/home/detail" expand="block" color="danger" class="btn-height-45 ion-hide-md-down"> لغو درخواست </ion-button>
-			</ion-col>
-			<ion-col size="6">
-				<ion-button routerLink="/page/home/request-service/step-2" expand="block" color="green" class="btn-height-45 ion-hide-md-down"> ویرایش درخواست</ion-button>
+			<ion-col size="12">
+				<ion-button (click)="edit()" expand="block" color="green"
+					class="btn-height-45 ion-hide-md-down"> ویرایش درخواست</ion-button>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
@@ -243,8 +147,10 @@
 <ion-footer class="bg-white ion-hide-lg-up">
 	<ion-grid no-padding>
 		<ion-row no-padding>
-			<ion-col size="5"><ion-button routerLink="/page/home/detail" expand="block" color="danger" class="btn-height-45"> لغو درخواست </ion-button></ion-col>
-			<ion-col size="7"><ion-button routerLink="/page/home/request-service/step-2" expand="block" color="green" class="btn-height-45"> ویرایش درخواست</ion-button></ion-col>
+			<ion-col size="12">
+				<ion-button (click)="edit()" expand="block" color="green"
+					class="btn-height-45"> ویرایش درخواست</ion-button>
+			</ion-col>
 		</ion-row>
 	</ion-grid>
 </ion-footer>

@@ -1,63 +1,91 @@
 <ion-header class="ion-hide-lg-up">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-button color="white" (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
         </ion-buttons>
         <ion-title>ویرایش اطلاعات</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content class="page-content ">
+<ion-content class="page-content" >
+    <ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+            slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
     <h1 class="lg-title mb-30 mx-10">ویرایش اطلاعات</h1>
     <!--===========================================================-->
-    <ion-list class="px-8">
+    <form [formGroup]="infoForm" class="ion-padding" (ngSubmit)="onEditInfo()" autocomplete="off">
         <ion-item>
             <ion-label position="floating">نام</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="firstName"></ion-input>
         </ion-item>
+        <app-validator [control]="infoForm.controls['firstName']" [controlName]="'نام'"></app-validator>
         <ion-item>
             <ion-label position="floating">نام خانوادگی</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="lastName"></ion-input>
         </ion-item>
+        <app-validator [control]="infoForm.controls['lastName']" [controlName]="'نام خانوادگی'"></app-validator>
         <ion-item>
             <ion-label position="floating">تلفن ثابت</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="phone"></ion-input>
         </ion-item>
+        <app-validator [control]="infoForm.controls['phone']" [controlName]="'تلفن ثابت'"></app-validator>
         <ion-item>
             <ion-label position="floating">پست الکترونیک</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="email"></ion-input>
         </ion-item>
-        <ion-item class="bg-white mt-30">
-            <ion-label>انتخاب محله</ion-label>
-            <ion-select okText="انتخاب کنید" cancelText="لغو">
-                <ion-select-option value="brown">محله</ion-select-option>
-                <ion-select-option value="blonde">محله</ion-select-option>
-                <ion-select-option value="black">محله</ion-select-option>
-                <ion-select-option value="red">محله</ion-select-option>
-            </ion-select>
+        <app-validator [control]="infoForm.controls['email']" [controlName]="'پست الکترونیک'"></app-validator>
+        <ion-item>
+            <ion-label position="stacked">منطقه</ion-label>
+            <ionic-selectable formControlName="areaId" #area [items]="areas" itemValueField="areaId"
+                itemTextField="areaTitle" searchPlaceholder="جستجو..." [searchFailText]="'محدوده یافت نشد.'"
+                placeholder="انتخاب کنید" [canSearch]="true" (onChange)="areaChange($event)">
+
+                <ng-template ionicSelectableHeaderTemplate>
+                    <ion-header>
+                        <ion-toolbar>
+                            <ion-buttons slot="start">
+                                <ion-button color="white" (click)="area.close()">
+                                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                                </ion-button>
+                            </ion-buttons>
+                            <ion-title>{{area.label}}</ion-title>
+                        </ion-toolbar>
+                    </ion-header>
+                </ng-template>
+                <ng-template ionicSelectableItemTemplate let-area="item">
+                    <div class="select-title">
+                        <ion-icon slot="icon-only" name="pin"></ion-icon>
+                        {{area.areaTitle}}
+                    </div>
+                </ng-template>
+            </ionic-selectable>
         </ion-item>
+        <app-validator [control]="infoForm.controls['areaId']" [controlName]="'منطقه'"></app-validator>
         <ion-item>
             <ion-label position="floating">آدرس دقیق</ion-label>
-            <ion-textarea></ion-textarea>
+            <ion-textarea formControlName="address"></ion-textarea>
         </ion-item>
-    </ion-list>
-    <!-- btn -->
-    <ion-grid class="mt-30">
-        <ion-row align-items-center justify-content-between no-padding>
-            <ion-col size="4">
-                <ion-button routerLink="/page/profile" expand="block" color="grey-3"
-                    class="btn-height-45 ion-hide-md-down"> بازگشت </ion-button>
-            </ion-col>
-            <ion-col size="6">
-                <ion-button routerLink="/page/profile" expand="block" color="green"
-                    class="btn-height-45 ion-hide-md-down mr-10"> ویرایش </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+        <app-validator [control]="infoForm.controls['address']" [controlName]="'آدرس دقیق'"></app-validator>
+        <!-- btn -->
+        <ion-grid class="mt-30" no-padding>
+            <ion-row align-items-center justify-content-between no-padding>
+                <ion-col size="4" no-padding>
+                    <ion-button type="button" (click)="goBack()" expand="block" color="grey-3" class="btn-height-45 ion-hide-md-down ion-no-margin">
+                        بازگشت </ion-button>
+                </ion-col>
+                <ion-col size="6" no-padding>
+                    <ion-button type="submit" expand="block" color="green" class="btn-height-45 ion-hide-md-down ion-no-margin">
+                        ویرایش </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
     <!--===========================================================-->
 </ion-content>
 <ion-footer class="bg-white ion-hide-lg-up">
     <div class="p-8">
-        <ion-button routerLink="/page/home/request-service/step-3" expand="full" color="green" class="btn-height-45">
+        <ion-button (click)="onEditInfo()" expand="full" color="green" class="btn-height-45">
             ویرایش </ion-button>
     </div>
 </ion-footer>

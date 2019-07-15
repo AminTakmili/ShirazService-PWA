@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { VerifyGuard } from './guards/verify.guard';
+import { LoginGuard } from './guards/login.guard';
+import { AppGuard } from './guards/app.guard';
 
 const routes: Routes = [
-  { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
-  { path: 'search', loadChildren: './pages/search/search.module#SearchPageModule' },
-  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
-  { path: 'more', loadChildren: './pages/more/more.module#MorePageModule' },
-  { path: 'myrequest', loadChildren: './pages/myrequest/myrequest.module#MyrequestPageModule' },
+	{ path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule', canActivate: [LoginGuard] },
+	{ path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [AppGuard] },
+	{ path: 'verify', loadChildren: './pages/verify/verify.module#VerifyPageModule', canActivate: [VerifyGuard] },
+
 ];
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+	imports: [
+		RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+	],
+	exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

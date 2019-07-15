@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-social-network',
-  templateUrl: './social-network.component.html',
-  styleUrls: ['./social-network.component.scss'],
+	selector: 'app-social-network',
+	templateUrl: './social-network.component.html',
+	styleUrls: ['./social-network.component.scss'],
 })
 export class SocialNetworkComponent implements OnInit {
 
-  constructor() { }
+	constructor(private navCtrl: NavController) { }
 
-  ngOnInit() {}
+	ngOnInit() { }
 
+	goBack() {
+		this.navCtrl.navigateBack('/page/more');
+	}
 }

@@ -21,15 +21,17 @@ ion-content{
     }
 }
 .stepEmpty{
+    min-width: 100%;
     img{
         display: block;
         width: auto;
-        max-width: 250px;
-        display: block;
+        max-width: 245px;
         margin: 10vh auto;
     }
 }
-
+ion-spinner{
+    min-width: 100%;
+}
 .step-item{
     ion-card{
      
@@ -55,7 +57,7 @@ ion-content{
             color:var(--ion-color-grey-2)
         }
         .time{
-            margin-right:5px;
+            margin-left:5px;
             font-size: 12px;
             color:var(--ion-color-grey-4)
         }
@@ -109,4 +111,8 @@ ion-content{
 }
 ion-segment-button{
     width: 180px;
+}
+ion-slide {
+    height: 100%;
+    overflow: auto;
 }

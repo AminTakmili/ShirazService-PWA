@@ -1,0 +1,50 @@
+<ion-header class="ion-hide-lg-up">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>کد تخفیف</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content" ion-padding>
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
+	<h1 class="lg-title mb-30 mx-10">کد تخفیف </h1>
+	<!--===========================================================-->
+	<form [formGroup]="discountForm" class="ion-padding" (ngSubmit)="onDiscount()" autocomplete="off">
+		<ion-text>
+			<h6 class="color-grey-3">در صورتی که دارای کد تخفیف شیراز سرویس هستید، کد مربوطه را در زیر وارد نمایید</h6>
+		</ion-text>
+		<ion-item lines="full">
+			<ion-label position="floating">کد تخفیف</ion-label>
+			<ion-input formControlName="discountCode"></ion-input>
+		</ion-item>
+		<!--===========================================================-->
+
+		<ion-grid class="mt-30 ion-hide-md-down" no-padding>
+			<ion-row align-items-center justify-content-between no-padding>
+				<ion-col size="4" no-padding>
+					<ion-button (click)="goBack()" expand="block" color="grey-3" class="btn-height-45 ion-hide-md-down ion-no-margin">
+						بازگشت </ion-button>
+				</ion-col>
+				<ion-col size="6" no-padding>
+					<ion-button type="submit" expand="block" color="green" class="btn-height-45 ion-hide-md-down ion-no-margin">
+						ثبت و ادامه</ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</form>
+
+	<!--===========================================================-->
+</ion-content>
+<ion-footer class="bg-white ion-hide-lg-up">
+	<div class="p-8">
+		<ion-button (click)="onDiscount()" expand="full" color="green" class="btn-height-45">ثبت
+			و
+			ادامه </ion-button>
+	</div>
+</ion-footer>

@@ -1,0 +1,80 @@
+<ion-header class="ion-hide-lg-up">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>{{ service?.serviceTitle }}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content " ion-padding>
+
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
+
+	<h1 class="lg-title mb-30 mx-10">{{ service?.serviceTitle }}</h1>
+	<!--===========================================================-->
+	<ion-card color="white" class="service-name">
+		<ion-card-content>
+			<ion-item lines="none">
+				<ion-thumbnail slot="start">
+					<img src="{{ service?.picAddress }}">
+				</ion-thumbnail>
+				<ion-label>
+					<h2 class="name">{{ service?.serviceTitle }}</h2>
+					<p class="desc" text-wrap><span
+							routerLink="/page/home/{{ service?.catId }}">{{ service?.catTitle }}</span> »» <span
+							routerLink="/page/home/services/list/{{ service?.catId }}/{{ service?.subCatId }}">{{ service?.subCatTitle }}</span>
+					</p>
+				</ion-label>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white">
+		<ion-card-content>
+			<ion-text>
+				<h2 class="desc-header mb-15">توضیحات</h2>
+			</ion-text>
+			<ion-text>
+				<p class="desc-text" [innerHtml]="service?.body | nl2br"></p>
+			</ion-text>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white" *ngIf="service?.extraTitle1 !== ''">
+		<ion-card-content>
+			<ion-text>
+				<h2 class="desc-header mb-15">{{ service?.extraTitle1 }}</h2>
+			</ion-text>
+			<ion-text>
+				<p class="desc-text" [innerHtml]="service?.extraField1 | nl2br"></p>
+			</ion-text>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white" *ngIf="service?.extraTitle2 !== ''">
+		<ion-card-content>
+			<ion-text>
+				<h2 class="desc-header mb-15">{{ service?.extraTitle2 }}</h2>
+			</ion-text>
+			<ion-text>
+				<p class="desc-text" [innerHtml]="service?.extraField2 | nl2br"></p>
+			</ion-text>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<div class="mx-8 mb-8">
+		<ion-button (click)="goToSteps()" expand="block" color="green"
+			class="addService ion-hide-md-down">درخواست این خدمت</ion-button>
+	</div>
+</ion-content>
+<ion-footer class="bg-white ion-hide-lg-up">
+	<div class="p-8">
+		<ion-button (click)="goToSteps()" expand="block" color="green" class="btn-height-45">
+			درخواست این خدمت</ion-button>
+	</div>
+</ion-footer>
