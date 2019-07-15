@@ -13,6 +13,10 @@
       "app",
       "page",
       "kebab-case"
+    ],
+    "indent": [
+      true,
+      "tabs"
     ]
   }
 }

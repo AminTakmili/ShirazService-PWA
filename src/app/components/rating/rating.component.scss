@@ -1,0 +1,27 @@
+.rating-holder {
+    position: relative;
+    direction: ltr;
+	width: 100px;
+    height: 20px;
+    margin: 10px auto;
+}
+.rating-foreground, .rating-background {
+    list-style: none;
+    padding-right: 0;
+    position: absolute;
+	top: 0;
+    left: 0;
+    padding-left: 0;
+    margin: 0;
+    li {
+        display: inline-block;
+        height: 20px;
+        ion-icon {
+            font-size: 20px;
+        }
+    }
+}
+.rating-background {
+	overflow: hidden;
+	white-space: nowrap;
+}

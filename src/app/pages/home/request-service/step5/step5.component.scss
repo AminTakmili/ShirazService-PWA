@@ -1,9 +1,0 @@
-@import '~src/theme/_mixins.scss';
-
-.bg-white{
-    --background: #fff;
-    ion-item{
-        border-top:var(--ion-color-grey-5);
-        --background: #fff;
-    }  
-}

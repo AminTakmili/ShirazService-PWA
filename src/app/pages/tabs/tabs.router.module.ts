@@ -3,43 +3,46 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
-  {
-    path: 'page',
-    component: TabsPage,
-    children: [
-      {
-        path: 'home',
-        loadChildren: '../home/home.module#HomePageModule',
-      },
-      {
-        path: 'search',
-        loadChildren: '../search/search.module#SearchPageModule'
-      },
-      {
-        path: 'myrequest',
-        loadChildren: '../myrequest/myrequest.module#MyrequestPageModule'
-      },
-      {
-        path: 'profile',
-        loadChildren: '../profile/profile.module#ProfilePageModule'
-      },
-      {
-        path: 'more',
-        loadChildren: '../more/more.module#MorePageModule'
-      },
-      
-      {
-        path: '',
-        redirectTo: '/page/home',
-        pathMatch: 'full'
-      }
-    ]
-  },
-  {
-    path: '',
-    redirectTo: '/page/home',
-    pathMatch: 'full'
-  }
+	{
+		path: 'page',
+		component: TabsPage,
+		children: [
+			{
+				path: 'home',
+				loadChildren: '../home/home.module#HomePageModule',
+			},
+			{
+				path: 'home/services',
+				loadChildren: '../services/services.module#ServicesPageModule',
+			},
+			{
+				path: 'search',
+				loadChildren: '../search/search.module#SearchPageModule'
+			},
+			{
+				path: 'myrequest',
+				loadChildren: '../myrequest/myrequest.module#MyrequestPageModule'
+			},
+			{
+				path: 'profile',
+				loadChildren: '../profile/profile.module#ProfilePageModule'
+			},
+			{
+				path: 'more',
+				loadChildren: '../more/more.module#MorePageModule'
+			},
+			{
+				path: '',
+				redirectTo: '/page/home',
+				pathMatch: 'full'
+			}
+		]
+	},
+	{
+		path: '',
+		redirectTo: '/page/home',
+		pathMatch: 'full'
+	}
 ];
 
 // const routes: Routes = [
@@ -51,9 +54,9 @@ const routes: Routes = [
 // ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+	imports: [
+		RouterModule.forChild(routes)
+	],
+	exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}

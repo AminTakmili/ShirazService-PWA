@@ -1,0 +1,65 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="dismiss()">
+				<ion-icon slot="icon-only" name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>نظرات کاربران</ion-title>
+	</ion-toolbar>
+	<ion-card color="white" class="mx-10">
+		<ion-card-content class="p-10">
+			<ion-item color="white" lines="none">
+				<ion-avatar slot="start">
+					<img src="{{ workman?.picAddress }}">
+				</ion-avatar>
+				<div>
+					<p>
+						<ion-text color="danger"><strong>{{ workman?.firstName }}
+								{{ workman?.lastName }}</strong>
+						</ion-text>
+					</p>
+					<p>
+						<ion-text color="danger">{{ workman?.membershipTime }}</ion-text> روز سابقه
+					</p>
+					<p>
+						<ion-text color="danger">{{ workman?.finishedServicesCount }}</ion-text> سرویس انجام
+						شده
+					</p>
+				</div>
+				<div slot="end" class="ion-text-left" dir="ltr">
+					<p class="rating-number ion-text-center">{{ workman?.rating }}</p>
+					<app-rating [rate]="workman?.rating" maxRate="5"></app-rating>
+				</div>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+</ion-header>
+<ion-content class="page-content">
+	<ion-card color="white" class="comment-card mx-10" *ngFor="let item of comments; let i = index;" [class.mt-0]="i === 0">
+		<ion-card-content>
+			<div class="comment-body">
+				<p>کاربر: {{ item.personName }}</p>
+				<p>سرویس: {{ item.serviceTitle }}</p>
+				<p>{{ item.comment }}</p>
+			</div>
+			<ion-item class="comment-rate" color="white" lines="none">
+				<p slot="start">
+					<ion-grid class="ion-no-padding">
+						<ion-row class="ion-no-padding">
+							<ion-col class="ion-no-padding" size="4">
+								<p>{{ item.point }}</p>
+							</ion-col>
+							<ion-col class="ion-no-padding" size="8">
+								<div>
+									<app-rating [rate]="item.point" maxRate="5"></app-rating>
+								</div>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</p>
+				<p slot="end">{{ item.insrtTimePersian }}</p>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

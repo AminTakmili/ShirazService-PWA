@@ -1,0 +1,183 @@
+<ion-header class="ion-hide-lg-up">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>پذیرش یا رد کردن متخصص</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="page-content" *ngIf="loading">
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
+</ion-content>
+<ion-content class="page-content" *ngIf="!loading">
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
+	<h1 class="lg-title mb-30 mx-10">پذیرش یا رد کردن متخصص</h1>
+	<!--===========================================================-->
+	<ion-card color="white" class="service-name mx-10">
+		<ion-card-content>
+			<ion-grid class="ion-no-padding">
+				<ion-row class="ion-no-padding">
+					<ion-col size-md="9" size="12" class="ion-no-padding">
+						<ion-item class="bg-white" lines="none">
+							<ion-thumbnail slot="start">
+								<img src="{{ request?.servicePicAddress }}">
+							</ion-thumbnail>
+							<ion-label>
+								<h2>{{ request?.serviceTitle }}</h2>
+								<ul class="category-lists">
+									<li>{{ request?.catTitle }}</li>
+									<li>{{ request?.subCatTitle }}</li>
+								</ul>
+							</ion-label>
+						</ion-item>
+					</ion-col>
+					<ion-col size="3" class="ion-no-padding ion-text-center ion-hide-md-down">
+						<h1><strong>{{ request?.trackingCode }}</strong></h1>
+						<h4>کد رهگیری</h4>
+						<br *ngIf="request?.discountCode !== ''">
+						<h1 *ngIf="request?.discountCode !== ''"><strong><ion-text color="danger">{{ request?.discountCode }}</ion-text></strong></h1>
+						<h4 *ngIf="request?.discountCode !== ''">کد تخفیف</h4>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<p class="ion-hide-lg-up"><strong>کد رهگیری : </strong>{{ request?.trackingCode }}</p>
+			<p *ngIf="request?.discountCode !== ''" class="ion-hide-lg-up"><strong>کد تخفیف : </strong><ion-text color="danger">{{ request?.discountCode }}</ion-text></p>
+			<p *ngIf="request?.desc !== ''"><strong>توضیح : </strong>{{ request?.desc }}</p>
+			<p>
+				<ion-icon name="person"></ion-icon> {{ request?.firstName }} {{ request?.lastName }}
+			</p>
+			<p>
+				<ion-icon name="pin"></ion-icon> {{ request?.areaTitle }} {{ request?.address }}
+			</p>
+			<p>
+				<ion-icon name="time"></ion-icon> {{ request?.dateFromPersian }} | {{ request?.timeDesc }}
+			</p>
+			<p *ngIf="request?.discountCode !== ''">
+				<ion-text color="danger">شما این درخواست را با کد تخفیف ثبت کرده اید</ion-text>
+			</p>
+			<p *ngIf="request?.discountCode !== ''">
+				<ion-text>{{ request?.discountDesc }}</ion-text>
+			</p>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white" class="mx-10">
+		<ion-card-content class="text-center">
+			<div class="servicer">
+				<img class="user-image" src="{{ workman?.picAddress }}">
+				<h4>{{ request?.workmanName }}</h4>
+				<app-rating [rate]="workman?.rating" maxRate="5"></app-rating>
+				<p>
+					<ion-grid class="ion-no-padding">
+						<ion-row class="ion-no-padding ion-justify-content-center">
+							<ion-col size-md="2" size="3" class="ion-no-padding">
+								<ion-fab-button (click)="showComments()" color="danger">
+									<ion-icon name="chatboxes"></ion-icon>
+								</ion-fab-button>
+							</ion-col>
+							<ion-col size-md="2" size="3" class="ion-no-padding">
+								<ion-fab-button (click)="showMedals()" color="danger">
+									<ion-icon name="medal"></ion-icon>
+								</ion-fab-button>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</p>
+			</div>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white" class="mx-10">
+		<ion-card-content>
+			<ion-text>
+				<h2 class="desc-header mb-15">پیشنه</h2>
+			</ion-text>
+			<p class="line-height-30">ایشان متولد {{ workman?.birthdayTimePersian }} هستند.</p>
+
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white" class="mx-10">
+		<ion-card-content>
+			<div class="portfolio">
+				<div class="item-1">
+					<p>{{ workman?.membershipTime }}</p>
+					<span>روز سابقه عضویت</span>
+				</div>
+				<div class="item-2">
+					<p>{{ workman?.finishedServicesCount }}</p>
+					<span>سرویس های انجام شده</span>
+				</div>
+				<div class="item-3">
+					<p>{{ workman?.medalsCount }}</p>
+					<span>نشان های دریافت شده</span>
+				</div>
+			</div>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white" class="mx-10">
+		<ion-card-content>
+			<ion-text>
+				<h2 class="desc-header mb-15">سوابق کاری و توضیحات</h2>
+			</ion-text>
+			<p class="line-height-30">{{ workman?.records }}</p>
+		</ion-card-content>
+	</ion-card>
+	<!--===========================================================-->
+	<ion-card color="white" class="mx-10">
+		<ion-card-content>
+			<ion-text>
+				<h2 class="desc-header mb-15">مدارک و توانایی ها</h2>
+			</ion-text>
+			<p class="line-height-30">{{ workman?.documents }}</p>
+		</ion-card-content>
+	</ion-card>
+
+	<!--===========================================================-->
+	<ion-grid class="mt-30 ion-hide-md-down mx-10" no-padding>
+		<ion-row align-items-center justify-content-between no-padding>
+			<ion-col size="3">
+				<ion-button (click)="wait()" expand="block" color="grey-3"
+					class="btn-height-45 ion-hide-md-down ion-no-margin">
+					منتظر می مانم </ion-button>
+			</ion-col>
+			<ion-col size="6">
+				<ion-button (click)="accept()" expand="block" color="green"
+					class="btn-height-45 ion-hide-md-down ion-no-margin">
+					می پذیرم
+				</ion-button>
+			</ion-col>
+			<ion-col size="3">
+				<ion-button (click)="cancel()" expand="block" color="danger"
+					class="btn-height-45 ion-hide-md-down ion-no-margin"> لغو می
+					کنم
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<!--===========================================================-->
+</ion-content>
+<ion-footer class="bg-white ion-hide-lg-up">
+	<ion-grid no-padding>
+		<ion-row no-padding>
+			<ion-col size="4">
+				<ion-button (click)="wait()" expand="block" color="grey-3" class="btn-height-45">
+					منتظر می مانم </ion-button>
+			</ion-col>
+			<ion-col size="4">
+				<ion-button (click)="accept()" expand="block" color="green" class="btn-height-45"> می پذیرم</ion-button>
+			</ion-col>
+			<ion-col size="4">
+				<ion-button (click)="cancel()" expand="block" color="danger" class="btn-height-45"> لغو می کنم
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>

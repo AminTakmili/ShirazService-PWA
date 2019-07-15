@@ -1,50 +1,65 @@
 <ion-header class="ion-hide-lg-up">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-button color="white" (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
         </ion-buttons>
         <ion-title>معرفی متخصص</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content class="page-content">
+    <ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+            slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
     <h1 class="lg-title mb-30 mx-10">معرفی متخصص</h1>
     <p class="px-8">
-        <ion-text>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و
-            متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-            متنوع با هدف بهبود ابزارهای کاربردی می باشد</ion-text>
+        <ion-text>شما می توانید فرد یا افرادی را به عنوان متخصص ماهر به مجموعه شیراز سرویس معرفی فرمائید. برای این کار
+            کافیست به ازاء هر نفر فرم زیر را تکمیل کنید پس از ثبت نام الکرونیکی و بررسی های اولیه، از طرف شیراز سرویس با
+            متخصص معرفی شده تماس گرفته خواهد شد.
+        </ion-text>
     </p>
     <!--===========================================================-->
-    <ion-list class="px-8">
+    <form [formGroup]="expertForm" class="ion-padding" (ngSubmit)="onExpert()" autocomplete="off">
+        <ion-text>
+            <h6 class="color-grey-3">وارد کردن تمامی موارد الزامی است</h6>
+        </ion-text>
         <ion-item>
             <ion-label position="floating">نام</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="firstName"></ion-input>
         </ion-item>
+        <app-validator [control]="expertForm.controls['firstName']"
+					[controlName]="'نام'"></app-validator>
         <ion-item>
             <ion-label position="floating">نام خانوادگی</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="lastName"></ion-input>
         </ion-item>
+        <app-validator [control]="expertForm.controls['lastName']"
+					[controlName]="'نام خانوادگی'"></app-validator>
         <ion-item>
             <ion-label position="floating">تلفن همراه</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="mobileNo"></ion-input>
         </ion-item>
-    </ion-list>
-    <ion-grid class="mt-30" no-padding>
-        <ion-row align-items-center justify-content-between no-padding>
-            <ion-col size="4">
-                <ion-button routerLink="/page/profile" expand="block" color="grey-3"
-                    class="btn-height-45 ion-hide-md-down"> بازگشت </ion-button>
-            </ion-col>
-            <ion-col size="6">
-                <ion-button routerLink="/page/profile/expert-introduction/experience" expand="block" color="green"
-                    class="btn-height-45 ion-hide-md-down mr-10"> ثبت و ادامه </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+        <app-validator [control]="expertForm.controls['mobileNo']"
+					[controlName]="'تلفن همراه'"></app-validator>
+        <ion-grid class="mt-30" no-padding>
+            <ion-row align-items-center justify-content-between no-padding>
+                <ion-col size="4">
+                    <ion-button type="button" (click)="goBack()" expand="block" color="grey-3"
+                        class="btn-height-45 ion-hide-md-down ion-no-margin"> بازگشت </ion-button>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-button type="submit" expand="block" color="green"
+                        class="btn-height-45 ion-hide-md-down ion-no-margin"> ثبت و ادامه </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
     <!--===========================================================-->
 </ion-content>
 <ion-footer class="bg-white ion-hide-lg-up">
     <div class="p-8">
-        <ion-button routerLink="/page/profile/expert-introduction/experience" expand="full" color="green"
+        <ion-button (click)="onExpert()" expand="full" color="green"
             class="btn-height-45">ثبت و ادامه</ion-button>
     </div>
 </ion-footer>

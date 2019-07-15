@@ -1,3 +1,61 @@
-<p>
-  survey works!
-</p>
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="dismiss()">
+				<ion-icon slot="icon-only" name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>نظرسنجی</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="page-content ion-padding">
+	<p>
+		شیراز سرویس جهت بهبود کیفیت کار، در پایان هر درخواست در خصوص عملکرد سرویس دهندگان، از کاربران نظرسنجی انجام می
+		دهد. شما نیز می توانید قبل از پایان سرویس دهی در نظرسنجی شرکت کنید.<br>
+		از این که با صبر و حوصله به سوالات مطرح شده پاسخ می دهید کمال تشکر را داریم.<br>
+		<ion-text color="danger">شما می توانید به هر سوال از 1 تا 5 ستاره اختصاص دهید</ion-text>
+	</p>
+	<ion-slides #slides [options]="slidesOpts">
+		<ion-slide *ngFor="let item of questions; let i = index;">
+			<ion-grid no-padding>
+				<ion-row no-padding>
+					<ion-col size="12" no-padding class="ion-text-right">
+						<ion-text>{{ i + 1 }} از {{ questions.length }}: {{ item.title }}</ion-text>
+					</ion-col>
+				</ion-row>
+				<ion-row no-padding>
+					<ion-col size="12" dir="ltr" no-padding class="ion-text-center">
+						<star-rating value="0" checkedcolor="#d00e0e" uncheckedcolor="#757575" size="50px"
+							readonly="false" (rate)="onRate($event, i)"></star-rating>
+					</ion-col>
+				</ion-row>
+				<ion-row no-padding *ngIf="currentSlide === questions.length - 1">
+					<ion-col size="12" no-padding class="ion-text-center">
+						<ion-item>
+							<ion-label position="floating">متن نظر خود را در این قسمت وارد کنید</ion-label>
+							<ion-input type="text" [(ngModel)]="comment"></ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-slide>
+	</ion-slides>
+</ion-content>
+<ion-footer>
+	<ion-grid no-padding>
+		<ion-row no-padding>
+			<ion-col size="6">
+				<ion-button *ngIf="currentSlide !== questions.length - 1" (click)="next()" color="grey-3"
+					class="btn-height-45">
+					بعدی </ion-button>
+				<ion-button *ngIf="currentSlide === questions.length - 1" (click)="finish()" color="grey-3"
+					class="btn-height-45">
+					پایان سرویس </ion-button>
+			</ion-col>
+			<ion-col size="6" class="ion-text-left">
+				<ion-button *ngIf="currentSlide !== 0" (click)="prev()" color="grey-3" class="btn-height-45"> قبلی
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>

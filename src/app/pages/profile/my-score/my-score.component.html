@@ -1,61 +1,50 @@
 <ion-header class="ion-hide-lg-up">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-button color="white" (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
         </ion-buttons>
-        <ion-title>امتیاز من</ion-title>
+        <ion-title>امتیازات من</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content class="page-content ">
-    <ion-button class="ion-hide-md-down" nav-pop routerLink=".." color="medium" fill="clear"> بازگشت <ion-icon
+    <ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
             slot="start" name="arrow-back"></ion-icon>
     </ion-button>
-    <h1 class="lg-title mb-30 mx-10">امتیاز من</h1>
+    <h1 class="lg-title mb-30 mx-10">امتیازات من</h1>
     <!--===========================================================-->
     <p class="px-8">
-        <ion-text>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و
-            متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-            متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان
-            جامعه و متخصصان را می طلبد</ion-text>
+        <ion-text>با معرفی اپلیکیشن شیراز سرویس به دوستانتان، امتیاز بگیرید و شانس خود را در قرعه کشی جوایز نفیس افزایش
+            دهید</ion-text>
     </p>
     <!--===========================================================-->
-
-    <ion-card color="white">
-        <ion-card-content>
-            <div class="portfolio">
-                <div class="item-1">
-                    <p>150</p>
-                    <span>ثبت نام در برنامه</span>
-                </div>
-                <div class="item-2">
-                    <p>17</p>
-                    <span> مجموع امتیاز ها </span>
-                </div>
-            </div>
-        </ion-card-content>
-    </ion-card>
-    <!--  -->
-
     <ion-grid class="mt-30" no-padding>
         <ion-row align-items-center justify-content-center no-padding>
-            <ion-col size="12">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                است.</ion-col>
-            <ion-col size-lg="6" size="10">
+            <ion-col size="6">
                 <ion-button routerLink="/page/home/request-service/step-1" expand="block" color="grey-3"
                     class="btn-height-45 "> پیامک دعوت نامه </ion-button>
             </ion-col>
-            <ion-col size="12">
-                <ion-item-divider>
-                    <ion-label>
-
-                    </ion-label>
-                </ion-item-divider>
-            </ion-col>
-            <ion-col size="12">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                است.</ion-col>
-            <ion-col size-lg="6" size="10">
+            <ion-col size="6">
                 <ion-button routerLink="/page/home/request-service/step-3" expand="block" color="green"
                     class="btn-height-45  mr-10"> به اشتراک بگذارید </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col *ngFor="let item of points" size-md="4" size-sm="4" size="6">
+                <ion-card class="ion-no-padding ion-no-margin bg-white score-card" (click)="goTo(item)">
+                    <ion-card-header>
+                        <ion-card-title>{{ item.reasonTitle }}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content class="no-selelct-text cursor-pointer">
+                        <div class="score">
+                            {{ item.point }} امتیاز
+                        </div>
+                        <div class="date">{{ item.insrtTimeFullPersian }}</div>
+                    </ion-card-content>
+                </ion-card>
             </ion-col>
         </ion-row>
     </ion-grid>

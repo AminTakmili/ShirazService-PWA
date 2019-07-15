@@ -1,56 +1,74 @@
 <ion-header class="ion-hide-lg-up">
 	<ion-toolbar>
 		<ion-buttons slot="start">
-			<ion-back-button></ion-back-button>
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
 		</ion-buttons>
 		<ion-title>نواحی تحت پوشش متخصص</ion-title>
 	</ion-toolbar>
 </ion-header>
 <ion-content class="page-content px-8">
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
 	<h1 class="lg-title mb-30 mx-10">نواحی تحت پوشش متخصص</h1>
-	<p class="px-8">
-		<ion-text>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و
-			متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-			متنوع با هدف بهبود ابزارهای کاربردی می باشد</ion-text>
-	</p>
 	<!--===========================================================-->
-	<ion-list class="px-8">
-		<ion-item class="mt-30 px-8">
-			<ion-label>محدوده کار</ion-label>
-			<ion-select okText="انتخاب کنید" cancelText="لغو">
-				<ion-select-option value="brown">محله</ion-select-option>
-				<ion-select-option value="blonde">محله</ion-select-option>
-				<ion-select-option value="black">محله</ion-select-option>
-				<ion-select-option value="red">محله</ion-select-option>
-			</ion-select>
+	<form [formGroup]="areaForm" class="ion-padding" (ngSubmit)="onArea()" autocomplete="off">
+		<ion-item>
+			<ion-label position="stacked">منطقه</ion-label>
+			<ionic-selectable formControlName="areaId" #area [items]="areas" itemValueField="areaId"
+				itemTextField="areaTitle" searchPlaceholder="جستجو..." [searchFailText]="'محدوده یافت نشد.'"
+				placeholder="انتخاب کنید" [canSearch]="true" >
+
+				<ng-template ionicSelectableHeaderTemplate>
+					<ion-header>
+						<ion-toolbar>
+							<ion-buttons slot="start">
+								<ion-button color="white" (click)="area.close()">
+									<ion-icon slot="icon-only" name="close"></ion-icon>
+								</ion-button>
+							</ion-buttons>
+							<ion-title>{{area.label}}</ion-title>
+						</ion-toolbar>
+					</ion-header>
+				</ng-template>
+				<ng-template ionicSelectableItemTemplate let-area="item">
+					<div class="select-title">
+						<ion-icon slot="icon-only" name="pin"></ion-icon>
+						{{area.areaTitle}}
+					</div>
+				</ng-template>
+			</ionic-selectable>
 		</ion-item>
+		<app-validator [control]="areaForm.controls['areaId']" [controlName]="'منطقه'"></app-validator>
 		<ion-item>
 			<ion-label position="floating">آدرس</ion-label>
-			<ion-input></ion-input>
+			<ion-input formControlName="address"></ion-input>
 		</ion-item>
+		<app-validator [control]="areaForm.controls['address']" [controlName]="'آدرس'"></app-validator>
 		<ion-item>
 			<ion-label position="floating">توضیحات</ion-label>
 			<ion-textarea></ion-textarea>
 		</ion-item>
-	</ion-list>
-	<ion-grid class="mt-30" no-padding>
-		<ion-row align-items-center justify-content-between no-padding>
-			<ion-col size="4">
-				<ion-button routerLink="/page/profile/expert-introduction/experience" expand="block" color="grey-3"
-					class="btn-height-45 ion-hide-md-down">
-					بازگشت </ion-button>
-			</ion-col>
-			<ion-col size="6">
-				<ion-button routerLink="/page/profile" expand="block" color="green"
-					class="btn-height-45 ion-hide-md-down mr-10"> ثبت </ion-button>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+		<ion-grid class="mt-30" no-padding>
+			<ion-row align-items-center justify-content-between no-padding>
+				<ion-col size="4">
+					<ion-button type="button" (click)="goBack()" expand="block" color="grey-3"
+						class="btn-height-45 ion-hide-md-down">
+						بازگشت </ion-button>
+				</ion-col>
+				<ion-col size="6">
+					<ion-button type="submit" expand="block" color="green" class="btn-height-45 ion-hide-md-down mr-10">
+						پایان، معرفی متخصص </ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</form>
 	<!--===========================================================-->
 </ion-content>
 <ion-footer class="bg-white ion-hide-lg-up">
 	<div class="p-8">
-		<ion-button routerLink="/page/profile/expert-introduction/experience" expand="full" color="green"
-			class="btn-height-45">ثبت</ion-button>
+		<ion-button (click)="onArea()" expand="full" color="green" class="btn-height-45">پایان، معرفی متخصص</ion-button>
 	</div>
 </ion-footer>

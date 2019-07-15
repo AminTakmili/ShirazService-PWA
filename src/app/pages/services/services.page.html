@@ -1,0 +1,32 @@
+<ion-header class="ion-hide-lg-up">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="white" (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{ services[0]?.subCatTitle }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content" ion-padding>
+    <ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear">
+        بازگشت <ion-icon slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+    <h1 class="lg-title mb-30 mx-10">{{ services[0]?.subCatTitle }}</h1>
+    <ion-grid>
+        <ion-row>
+            <ion-col *ngFor="let item of services" size-md="3" size-sm="4" size="6">
+                <ion-card class="ion-no-padding ion-no-margin bg-white service-card ion-activatable"
+                    (click)="goTo(item)">
+                    <ion-card-content class="no-selelct-text cursor-pointer">
+                        <span class="tag" *ngIf="item.tagId === 2">جدید</span>
+                        <ion-ripple-effect></ion-ripple-effect>
+                        <div class="img"><img src="{{ item.picAddress }}"></div>
+                        <div class="name ">{{item.serviceTitle }}</div>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

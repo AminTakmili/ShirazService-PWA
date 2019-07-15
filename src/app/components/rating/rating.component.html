@@ -1,0 +1,36 @@
+<div class="rating-holder">
+	<ul class="rating-foreground">
+		<li>
+			<ion-icon name="star-outline"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star-outline"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star-outline"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star-outline"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star-outline"></ion-icon>
+		</li>
+	</ul>
+	<ul class="rating-background" [style.width.%]="rate * 100 / maxRate">
+		<li>
+			<ion-icon name="star" color="warning"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star" color="warning"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star" color="warning"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star" color="warning"></ion-icon>
+		</li>
+		<li>
+			<ion-icon name="star" color="warning"></ion-icon>
+		</li>
+	</ul>
+</div>

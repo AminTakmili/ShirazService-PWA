@@ -1,56 +1,54 @@
 <ion-header class="ion-hide-lg-up">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-button color="white" (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
         </ion-buttons>
-        <ion-title>پشتیبانی</ion-title>
+        <ion-title>ارسال نظرات</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content class="page-content " ion-padding>
-        <ion-button class="ion-hide-md-down" nav-pop routerLink=".." color="medium" fill="clear"> بازگشت <ion-icon
+<ion-content class="page-content" ion-padding>
+    <ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
             slot="start" name="arrow-back"></ion-icon>
     </ion-button>
-    <h1 class="lg-title mb-30 mx-10">پشتیبانی</h1>
+    <h1 class="lg-title mb-30 mx-10">ارسال نظرات</h1>
     <!--===========================================================-->
-    <!--  -->
-    <ion-grid>
-        <ion-row>
-            <ion-col size="12">
-                <ion-item>
-                    <ion-label> موضوع </ion-label>
-                    <ion-select okText="انتخاب کنید" cancelText="لغو">
-                        <ion-select-option value="1">نظر</ion-select-option>
-                        <ion-select-option value="2">انتقاد</ion-select-option>
-                        <ion-select-option value="3">پیشنهاد</ion-select-option>
-                        <ion-select-option value="4">نیاز جدید</ion-select-option>
-                        <ion-select-option value="4">گزارش خطا</ion-select-option>
-                    </ion-select>
-                </ion-item>
-            </ion-col>
-            <ion-col size="12">
-                <ion-item>
-                    <ion-label position="floating"> متن پیام </ion-label>
-                    <ion-textarea></ion-textarea>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-
-    <!-- btn -->
-    <ion-grid class="mt-30" no-padding>
-        <ion-row align-items-center justify-content-between no-padding>
-            <ion-col size="4">
-                <ion-button routerLink="/page/profile" expand="block" color="grey-3" class="btn-height-45 ion-hide-md-down"> بازگشت </ion-button>
-            </ion-col>
-            <ion-col size="6">
-                <ion-button routerLink="/page/profile" expand="block" color="green" class="btn-height-45 ion-hide-md-down mr-10"> ارسال درخواست </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-    <!--===========================================================-->
+    <form [formGroup]="supportForm" class="ion-padding" (ngSubmit)="onSupport()" autocomplete="off">
+        <ion-item>
+            <ion-label position="stacked"> موضوع </ion-label>
+            <ion-select placeholder="انتخاب کنید" formControlName="type" interface="action-sheet" okText="انتخاب کنید" cancelText="لغو">
+                <ion-select-option value="1">نظر</ion-select-option>
+                <ion-select-option value="2">انتقاد</ion-select-option>
+                <ion-select-option value="3">پیشنهاد</ion-select-option>
+                <ion-select-option value="4">نیاز جدید</ion-select-option>
+                <ion-select-option value="4">گزارش خطا</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <app-validator [control]="supportForm.controls['type']" [controlName]="'موضوع'"></app-validator>
+        <ion-item>
+            <ion-label position="floating"> متن پیام </ion-label>
+            <ion-textarea formControlName="comments"></ion-textarea>
+        </ion-item>
+        <app-validator [control]="supportForm.controls['comments']" [controlName]="'متن پیام'"></app-validator>
+        <!-- btn -->
+        <ion-grid class="mt-30" no-padding>
+            <ion-row align-items-center justify-content-between no-padding>
+                <ion-col size="4" no-padding>
+                    <ion-button type="button" (click)="goBack()" expand="block" color="grey-3" class="btn-height-45 ion-hide-md-down ion-no-margin">
+                        بازگشت </ion-button>
+                </ion-col>
+                <ion-col size="6" no-padding>
+                    <ion-button type="submit" expand="block" color="green"
+                        class="btn-height-45 ion-hide-md-down ion-no-margin"> تایید و ثبت </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
 </ion-content>
 <ion-footer class="bg-white ion-hide-lg-up">
     <div class="p-8">
-        <ion-button routerLink="/page/profile" expand="full" color="green" class="btn-height-45"> ارسال درخواست </ion-button>
+        <ion-button (click)="onSupport()" expand="full" color="green" class="btn-height-45"> تایید و ثبت
+        </ion-button>
     </div>
 </ion-footer>

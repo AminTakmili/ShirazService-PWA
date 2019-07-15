@@ -2,30 +2,11 @@
     <ion-toolbar>
         <ion-title>درخواست های من</ion-title>
     </ion-toolbar>
-    <ion-segment scrollable mode="md"  >
-        <ion-segment-button layout="icon-start" href="#total" value="0">
-            <ion-label>آمار کلی</ion-label>
-            <ion-icon name="pie"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#waitingforExpert" value="1">
-            <ion-label>در انتظار متخصص</ion-label>
-            <ion-icon name="time"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#waiting" value="2">
-            <ion-label>منتظر تایید</ion-label>
-            <ion-icon name="hammer"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#actived" value="3">
-            <ion-label>پذیرفته شده</ion-label>
-            <ion-icon name="checkmark"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#finished" value="4">
-            <ion-label>خاتمه یافته</ion-label>
-            <ion-icon name="done-all"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button layout="icon-start" href="#canceled" value="5">
-            <ion-label>لغو شده</ion-label>
-            <ion-icon name="pin"></ion-icon>
+    <ion-segment scrollable #segment [(ngModel)]="segmentSelected">
+        <ion-segment-button *ngFor="let item of segmentStatus" (click)="ionSelect(item.id)" layout="icon-start"
+            href="#total" value="{{item.id}}">
+            <ion-label>{{item.name}}</ion-label>
+            <ion-icon name="{{item.icon}}"></ion-icon>
         </ion-segment-button>
     </ion-segment>
 </ion-header>
@@ -33,15 +14,16 @@
 <ion-content class="page-content" ion-padding scrollX="false">
     <h1 class="lg-title mb-30 mx-10">درخواست های من</h1>
     <!-- Scrollable Segment -->
-    <ion-segment scrollable #segment class="ion-hide-md-down" mode="md" [value]="segmentSelected">
-        <ion-segment-button *ngFor="let item of segmentStatus" layout="icon-start" href="#total"  (ionSelect)="ionSelect(item.id)" value="{{item.id}}">
+    <ion-segment scrollable #segment2 class="ion-hide-md-down" [(ngModel)]="segmentSelected">
+        <ion-segment-button *ngFor="let item of segmentStatus" layout="icon-start" href="#total"
+            (click)="ionSelect(item.id)" value="{{item.id}}">
             <ion-label>{{item.name}}</ion-label>
             <ion-icon name="{{item.icon}}"></ion-icon>
         </ion-segment-button>
     </ion-segment>
     <!--====================================================-->
     <div class="tab-content">
-        <ion-slides pager="false" [options]="SlideOrders" #slides (ionSlideWillChange)="ionSlideWillChange()" >
+        <ion-slides pager="false" [options]="SlideOrders" #slides (ionSlideWillChange)="ionSlideWillChange()">
             <ion-slide>
                 <ion-grid>
                     <ion-row>
@@ -54,146 +36,149 @@
                 </ion-grid>
             </ion-slide>
             <ion-slide>
-                <!-- <div class="stepEmpty">
+                <div class="stepEmpty" *ngIf="!tabLoading && type1.length === 0">
                     <img src="assets/img/step-empty.png">
-                </div> -->
-                <div class="w-100">
-                    <ion-card *ngFor="let item of [11,12,13,14,15,16,17,18,19,20,1,2]" color="white" class="step-item ion-activatable" routerLink="/page/myrequest/edit-request">
-                        <ion-card-content class="order">
-                            <ion-ripple-effect></ion-ripple-effect>
-                            <ion-item lines="none" detail button="true"> 
-                                <ion-thumbnail slot="start">
-                                    <img src="assets/test/icon/{{item}}.png">
-                                </ion-thumbnail>
-                                <ion-label>
-                                    <h2 class="name">عنوان شغل</h2>
-                                    <div class="timeArea">
-                                        <span class="area">محدوده ی زند</span>
-                                        <span class="time">{{item}} دقیقه پیش</span>
-                                    </div>
-                                    <div class="StatusPriority">
-                                        <span class="Priority Priority-1"> پایین <i class="ion ion-md-arrow-dropdown"></i>
-                                        </span>
-                                        <span class="status status-1">در انتظار متخصص</span>
-                                    </div>
-                                </ion-label>
-                            </ion-item>
-                        </ion-card-content>
-                    </ion-card>
+                    متاسفانه هیچ موردی یافت نشد!
                 </div>
-
-            </ion-slide>
-            <ion-slide>
-                <!-- <div class="stepEmpty">
-                        <img src="assets/img/step-empty.png">
-                    </div> -->
-                <div class="w-100">
-                    <ion-card *ngFor="let item of [11,12,13,14,15,16,17,18,19,20,1,2]" color="white" class="step-item ion-activatable" routerLink="/page/myrequest/pending-request">
-                        <ion-card-content class="order">
-                                <ion-ripple-effect></ion-ripple-effect>
-                            <ion-item lines="none" detail button="true">
-                                <ion-thumbnail slot="start">
-                                    <img src="assets/test/icon/{{item}}.png">
-                                </ion-thumbnail>
-                                <ion-label>
-                                    <h2 class="name">عنوان شغل</h2>
-                                    <div class="timeArea">
-                                        <span class="area">محدوده ی زند</span>
-                                        <span class="time">{{item}} دقیقه پیش</span>
-                                    </div>
-                                    <div class="StatusPriority">
-                                        <span class="Priority Priority-2"> متوسط <i class="ion ion-ios-arrow-down"></i>
-                                        </span>
-                                        <span class="status status-2">منتظر تایید</span>
-                                    </div>
-                                </ion-label>
-                            </ion-item>
-                        </ion-card-content>
-                    </ion-card>
-                </div>
-            </ion-slide>
-            <ion-slide>
-                <!-- <div class="stepEmpty">
-            <img src="assets/img/step-empty.png">
-        </div> -->
-                <div class="w-100">
-                    <ion-card *ngFor="let item of [1,21,4,6,8,10,11,12,19,3,1,2]" color="white" class="step-item ion-activatable" routerLink="/page/myrequest/finish-request">
-                        <ion-card-content class="order">
-                                <ion-ripple-effect></ion-ripple-effect>
-                            <ion-item lines="none" detail button="true">
-                                <ion-thumbnail slot="start">
-                                    <img src="assets/test/icon/{{item}}.png">
-                                </ion-thumbnail>
-                                <ion-label>
-                                    <h2 class="name">عنوان شغل</h2>
-                                    <div class="timeArea">
-                                        <span class="area">محدوده ی زند</span>
-                                        <span class="time">{{item}} دقیقه پیش</span>
-                                    </div>
-                                    <div class="StatusPriority">
-                                        <span class="Priority Priority-3"> زیاد <i class="ion ion-ios-arrow-up"></i>
-                                        </span>
-                                        <span class="status status-3">پذیرفته شده</span>
-                                    </div>
-                                </ion-label>
-                            </ion-item>
-                        </ion-card-content>
-
-                    </ion-card>
-                </div>
-            </ion-slide>
-            <ion-slide>
-            <!-- <div class="stepEmpty">
-                <img src="assets/img/step-empty.png">
-            </div> -->
-                <div class="w-100">
-                    <ion-card *ngFor="let item of [30,1,13,14,5,16,7,18,19,20,1,2]" color="white"  class="step-item ion-activatable">
-                        <ion-card-content class="order">
-                            <ion-ripple-effect></ion-ripple-effect>
-                            <ion-item lines="none" detail >
-                                <ion-thumbnail slot="start">
-                                    <img src="assets/test/icon/{{item}}.png">
-                                </ion-thumbnail>
-                                <ion-label>
-                                    <h2 class="name">عنوان شغل</h2>
-                                    <div class="timeArea">
-                                        <span class="area">محدوده ی زند</span>
-                                        <span class="time">{{item}} دقیقه پیش</span>
-                                    </div>
-                                    <div class="StatusPriority">
-                                        <span class="Priority Priority-4"> فوری <i class="ion ion-md-arrow-dropup"></i></span>
-                                        <span class="status status-4">خاتمه یافته</span>
-                                    </div>
-                                </ion-label>
-                            </ion-item>
-                        </ion-card-content>
-                    </ion-card>
-                </div>
-            </ion-slide>
-            <ion-slide>
-
-                <!-- <div class="stepEmpty">
-            <img src="assets/img/step-empty.png">
-        </div> -->
-                <div class="w-100">
-                    <ion-card *ngFor="let item of [1,2,3,14,7,16,8,18,9,20,1,2]" color="white" class="step-item ion-activatable">
-                        <ion-card-content class="order">
+                <ion-spinner *ngIf="tabLoading" class="ion-margin-top" name="lines"></ion-spinner>
+                <div class="w-100" *ngIf="!tabLoading">
+                    <ion-card *ngFor="let item of type1" color="white" class="step-item ion-activatable">
+                        <ion-card-content class="order" (click)="pendingRequest(item)">
                             <ion-ripple-effect></ion-ripple-effect>
                             <ion-item lines="none" detail>
                                 <ion-thumbnail slot="start">
-                                    <img src="assets/test/icon/{{item}}.png">
+                                    <img src="{{ item.servicePicAddress }}">
                                 </ion-thumbnail>
                                 <ion-label>
-                                    <h2 class="name">عنوان شغل</h2>
+                                    <h2 class="name">{{ item.serviceTitle }}</h2>
                                     <div class="timeArea">
-                                        <span class="area">محدوده ی زند</span>
-                                        <span class="time">{{item}} دقیقه پیش</span>
+                                        <span class="time">{{ item.insrtTimeSimple }} ؛ </span>
+                                        <span class="area">محدوده {{ item.areaTitle }}</span>
                                     </div>
                                     <div class="StatusPriority">
-                                        <span class="Priority Priority-2"> پایین <i
-                                                class="ion ion-md-arrow-dropdown"></i>
-                                        </span>
-                                        <span class="status status-5">لغو شده</span>
+                                        <span class="Priority Priority-{{ item.priority }}">{{ item.priorityTitle }}</span>
+                                        <span class="status status-{{ item.state }}">{{ item.stateTitle }}</span>
+                                    </div>
+                                </ion-label>
+                            </ion-item>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="stepEmpty" *ngIf="!tabLoading && type2.length === 0">
+                    <img src="assets/img/step-empty.png">
+                    متاسفانه هیچ موردی یافت نشد!
+                </div>
+                <ion-spinner *ngIf="tabLoading" class="ion-margin-top" name="lines"></ion-spinner>
+                <div class="w-100">
+                    <ion-card *ngFor="let item of type2" color="white" class="step-item ion-activatable">
+                        <ion-card-content class="order" (click)="selectedRequest(item)">
+                            <ion-ripple-effect></ion-ripple-effect>
+                            <ion-item lines="none" detail>
+                                <ion-thumbnail slot="start">
+                                    <img src="{{ item.servicePicAddress }}">
+                                </ion-thumbnail>
+                                <ion-label>
+                                    <h2 class="name">{{ item.serviceTitle }}</h2>
+                                    <div class="timeArea">
+                                        <span class="time">{{ item.insrtTimeSimple }} ؛ </span>
+                                        <span class="area">محدوده {{ item.areaTitle }}</span>
+                                    </div>
+                                    <div class="StatusPriority">
+                                        <span class="Priority Priority-{{ item.priority }}">{{ item.priorityTitle }}</span>
+                                        <span class="status status-{{ item.state }}">{{ item.stateTitle }}</span>
+                                    </div>
+                                </ion-label>
+                            </ion-item>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="stepEmpty" *ngIf="!tabLoading && type3.length === 0">
+                    <img src="assets/img/step-empty.png">
+                    متاسفانه هیچ موردی یافت نشد!
+                </div>
+                <ion-spinner *ngIf="tabLoading" class="ion-margin-top" name="lines"></ion-spinner>
+                <div class="w-100">
+                    <ion-card *ngFor="let item of type3" color="white" class="step-item ion-activatable">
+                        <ion-card-content class="order" (click)="acceptedRequest(item)">
+                            <ion-ripple-effect></ion-ripple-effect>
+                            <ion-item lines="none" detail>
+                                <ion-thumbnail slot="start">
+                                    <img src="{{ item.servicePicAddress }}">
+                                </ion-thumbnail>
+                                <ion-label>
+                                    <h2 class="name">{{ item.serviceTitle }}</h2>
+                                    <div class="timeArea">
+                                        <span class="time">{{ item.insrtTimeSimple }} ؛ </span>
+                                        <span class="area">محدوده {{ item.areaTitle }}</span>
+                                    </div>
+                                    <div class="StatusPriority">
+                                        <span class="Priority Priority-{{ item.priority }}">{{ item.priorityTitle }}</span>
+                                        <span class="status status-{{ item.state }}">{{ item.stateTitle }}</span>
+                                    </div>
+                                </ion-label>
+                            </ion-item>
+                        </ion-card-content>
+
+                    </ion-card>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="stepEmpty" *ngIf="!tabLoading && type4.length === 0">
+                    <img src="assets/img/step-empty.png">
+                    متاسفانه هیچ موردی یافت نشد!
+                </div>
+                <ion-spinner *ngIf="tabLoading" class="ion-margin-top" name="lines"></ion-spinner>
+                <div class="w-100">
+                    <ion-card *ngFor="let item of type4" color="white" class="step-item ion-activatable">
+                        <ion-card-content class="order" (click)="finishedRequest(item)">
+                            <ion-ripple-effect></ion-ripple-effect>
+                            <ion-item lines="none" detail>
+                                <ion-thumbnail slot="start">
+                                    <img src="{{ item.servicePicAddress }}">
+                                </ion-thumbnail>
+                                <ion-label>
+                                    <h2 class="name">{{ item.serviceTitle }}</h2>
+                                    <div class="timeArea">
+                                        <span class="time">{{ item.insrtTimeSimple }} ؛ </span>
+                                        <span class="area">محدوده {{ item.areaTitle }}</span>
+                                    </div>
+                                    <div class="StatusPriority">
+                                        <span class="Priority Priority-{{ item.priority }}">{{ item.priorityTitle }}</span>
+                                        <span class="status status-{{ item.state }}">{{ item.stateTitle }}</span>
+                                    </div>
+                                </ion-label>
+                            </ion-item>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="stepEmpty" *ngIf="!tabLoading && type5.length === 0">
+                    <img src="assets/img/step-empty.png">
+                    متاسفانه هیچ موردی یافت نشد!
+                </div>
+                <ion-spinner *ngIf="tabLoading" class="ion-margin-top" name="lines"></ion-spinner>
+                <div class="w-100" *ngIf="!tabLoading">
+                    <ion-card *ngFor="let item of type5" color="white" class="step-item ion-activatable">
+                        <ion-card-content class="order" (click)="canceledRequest(item)">
+                            <ion-ripple-effect></ion-ripple-effect>
+                            <ion-item lines="none" detail>
+                                <ion-thumbnail slot="start">
+                                    <img src="{{ item.servicePicAddress }}">
+                                </ion-thumbnail>
+                                <ion-label>
+                                    <h2 class="name">{{ item.serviceTitle }}</h2>
+                                    <div class="timeArea">
+                                        <span class="time">{{ item.insrtTimeSimple }} ؛ </span>
+                                        <span class="area">محدوده {{ item.areaTitle }}</span>
+                                    </div>
+                                    <div class="StatusPriority">
+                                        <span class="Priority Priority-{{ item.priority }}">{{ item.priorityTitle }}</span>
+                                        <span class="status status-{{ item.state }}">{{ item.stateTitle }}</span>
                                     </div>
                                 </ion-label>
                             </ion-item>

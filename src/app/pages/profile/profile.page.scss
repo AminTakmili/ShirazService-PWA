@@ -1,7 +1,4 @@
 @import '~src/theme/_mixins.scss';
-ion-item {
-    --background: transparent;
-}
 ion-thumbnail{
     --border-radius:50%;
     --size:50px;
@@ -9,6 +6,7 @@ ion-thumbnail{
 
 ion-item{
     --ripple-color:var(--color-grey);
+    --background: var(--ion-color-white);
     ion-icon {
         -webkit-margin-end: 16px;
         margin-inline-end: 16px;

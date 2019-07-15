@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="dismiss()">
+				<ion-icon slot="icon-only" name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>دلایل لغو درخواست</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="page-content ion-padding">
+	<p>
+		مشتری گرامی<br>
+		امیدواریم در سفارش های بعدی رضایت شما را جلب کنیم. لطفا دلیل لغو این سفارش را به ما بگوئید تا بتوانیم کیفت خدمات خود را بهبود دهیم<br>
+		با شیراز سرویس همراه باشید
+	</p>
+	<ion-grid>
+		<ion-row class="ion-justify-content-center">
+			<ion-col size="12" size-lg="8">
+				<ion-button expand="block" color="danger" (click)="cancel(item)" *ngFor="let item of reasons">{{ item.title }}</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

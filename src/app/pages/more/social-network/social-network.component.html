@@ -1,82 +1,75 @@
 <ion-header class="ion-hide-lg-up">
 	<ion-toolbar>
 		<ion-buttons slot="start">
-			<ion-back-button></ion-back-button>
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
 		</ion-buttons>
 		<ion-title>شبکه های اجتماعی</ion-title>
 	</ion-toolbar>
 </ion-header>
 <ion-content class="page-content ">
-		<ion-button class="ion-hide-md-down" nav-pop routerLink=".." color="medium" fill="clear"> بازگشت <ion-icon
-            slot="start" name="arrow-back"></ion-icon>
-    </ion-button>
+	<ion-button *ngIf="catId !== 0" class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear">
+		بازگشت <ion-icon slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
 	<h1 class="lg-title mb-30 mx-10">شبکه های اجتماعی</h1>
 	<!--===========================================================-->
 	<ion-list class="store-info">
 		<ion-list-header>
-			<ion-label>ما را در شبکه های اجتماعی دنبال کنید</ion-label>
+			<ion-text>ما را در شبکه های اجتماعی دنبال کنید</ion-text>
 		</ion-list-header>
-		<ion-item button="true">
+		<ion-item button="true" href="https://www.aparat.com/shirazservice" target="_blank">
 			<ion-avatar slot="start">
 				<img src="assets/img/aparat.png">
 			</ion-avatar>
 			<ion-label>
-				<h3>@Shiraz_service</h3>
-				<p><small>نام شبکه اجتماعی</small></p>
+				<h3>shirazservice</h3>
+				<p><small>آپارات</small></p>
 			</ion-label>
 		</ion-item>
-		<ion-item button="true">
-			<ion-avatar slot="start">
-				<img src="assets/img/facebook.png">
-			</ion-avatar>
-			<ion-label>
-				<h3>@Shiraz_service</h3>
-				<p><small>نام شبکه اجتماعی</small></p>
-			</ion-label>
-		</ion-item>
-		<ion-item button="true">
-			<ion-avatar slot="start">
-				<img src="assets/img/youtube.png">
-			</ion-avatar>
-			<ion-label>
-				<h3>@Shiraz_service</h3>
-				<p><small>نام شبکه اجتماعی</small></p>
-			</ion-label>
-		</ion-item>
-		<ion-item button="true">
-			<ion-avatar slot="start">
-				<img src="assets/img/twitter.png">
-			</ion-avatar>
-			<ion-label>
-				<h3>@Shiraz_service</h3>
-				<p><small>نام شبکه اجتماعی</small></p>
-			</ion-label>
-		</ion-item>
-		<ion-item button="true">
+		<ion-item button="true" href="https://telegram.me/ShirazServiceApp" target="_blank">
 			<ion-avatar slot="start">
 				<img src="assets/img/telegram.png">
 			</ion-avatar>
 			<ion-label>
-				<h3>@Shiraz_service</h3>
-				<p><small>نام شبکه اجتماعی</small></p>
+				<h3>@ShirazServiceApp</h3>
+				<p><small>تلگرام</small></p>
 			</ion-label>
 		</ion-item>
-		<ion-item button="true">
+		<ion-item button="true" href="https://www.instagram.com/ShirazServiceApp" target="_blank">
+			<ion-avatar slot="start">
+				<img src="assets/img/instagram.png">
+			</ion-avatar>
+			<ion-label>
+				<h3>@ShirazServiceApp</h3>
+				<p><small>اینستاگرام</small></p>
+			</ion-label>
+		</ion-item>
+		<ion-item button="true" href="https://sapp.ir/ShirazServiceApp" target="_blank">
 			<ion-avatar slot="start">
 				<img src="assets/img/soroush.png">
 			</ion-avatar>
 			<ion-label>
-				<h3>@Shiraz_service</h3>
-				<p><small>نام شبکه اجتماعی</small></p>
+				<h3>@ShirazServiceApp</h3>
+				<p><small>سروش</small></p>
 			</ion-label>
 		</ion-item>
-		<ion-item button="true" lines="none">
+		<ion-item button="true" href="https://eitaa.com/ShirazServiceApp" target="_blank">
+			<ion-avatar slot="start">
+				<img src="assets/img/eitaa.png">
+			</ion-avatar>
+			<ion-label>
+				<h3>@ShirazServiceApp</h3>
+				<p><small>ایتا</small></p>
+			</ion-label>
+		</ion-item>
+		<ion-item button="true" lines="none" href="https://ble.im/ShirazServiceApp" target="_blank">
 			<ion-avatar slot="start">
 				<img src="assets/img/bale.png">
 			</ion-avatar>
 			<ion-label>
-				<h3>@Shiraz_service</h3>
-				<p><small>نام شبکه اجتماعی</small></p>
+				<h3>@ShirazServiceApp</h3>
+				<p><small>بله</small></p>
 			</ion-label>
 		</ion-item>
 	</ion-list>

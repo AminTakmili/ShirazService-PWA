@@ -1,0 +1,35 @@
+<ion-header class="ion-hide-lg-up">
+	<ion-toolbar>
+		<ion-title>ورود به اپلیکیشن</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content" ion-padding>
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>ورود به اپلیکیشن</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			<form [formGroup]="loginForm" (ngSubmit)="onLogin()" autocomplete="off">
+				<ion-grid>
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="floating">شماره همراه</ion-label>
+								<ion-input type="text" formControlName="mobileNo"></ion-input>
+							</ion-item>
+							<app-validator [control]="loginForm.controls['mobileNo']" [controlName]="'شماره همراه'"
+								></app-validator>
+						</ion-col>
+						<ion-col size-md="6" size="12">
+							<ion-button color="primary" type="submit" expand="full" [disabled]="!loginForm.valid">اعتبار
+								سنجی و ورود
+							</ion-button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
