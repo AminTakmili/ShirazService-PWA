@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 	providedIn: 'root'
 })
 export class GlobalService {
-	private baseUrl = 'http://shz-service.ir/api/general/';
+	private baseUrl = 'https://shiraz-service.ir/api/general/';
 	private imgUrl = 'https://pizzawifi.com/uploads/';
 	private token = 'a06646e74fc8fcfef64d2d0dea0a9fb5';
 	private loading: Promise<HTMLIonLoadingElement>;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../../../services/global.service';
 import { SHUserPoint } from '../../../classes/SHUserPoint';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
 	selector: 'app-my-score',
@@ -11,7 +11,7 @@ import { NavController } from '@ionic/angular';
 export class MyScoreComponent implements OnInit {
 	points: SHUserPoint[] = [];
 
-	constructor(public global: GlobalService, private navCtrl: NavController) { }
+	constructor(public global: GlobalService, private modalController: ModalController, private navCtrl: NavController) { }
 
 	ngOnInit() {
 		this.global.showLoading().then((loader) => {
@@ -37,6 +37,36 @@ export class MyScoreComponent implements OnInit {
 				this.global.showError(error);
 			});
 		});
+	}
+
+	sendSms() {
+		// this.global.showAlert('', 'شماره تلفن دوست خود را وارد کنید', [
+		// 	{
+		// 		text: 'دعوت می کنم',
+		// 		handler: () => {
+
+		// 		}
+		// 	},
+		// 	{
+		// 		text: 'انصراف',
+		// 		role: 'cancel'
+		// 	}
+		// ], [
+		// 	{
+		// 		type: 'tel',
+		// 		name: 'mobile',
+		// 	}
+		// ]).then((alert) => {
+		// 	alert.present();
+		// });
+	}
+
+	async share() {
+		// const modal = await this.modalController.create({
+		// 	component: SharePage
+		// });
+
+		// modal.present();
 	}
 
 	goBack() {

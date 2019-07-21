@@ -1,0 +1,7 @@
+{
+  "appId": "ir.atriatech.shirazservice",
+  "appName": "Shiraz Service",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

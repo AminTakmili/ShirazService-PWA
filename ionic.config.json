@@ -1,5 +1,7 @@
 {
   "name": "shirazservice-pwa",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

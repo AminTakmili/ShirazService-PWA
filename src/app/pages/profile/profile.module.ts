@@ -34,7 +34,7 @@ const routes: Routes = [
 		FormsModule,
 		IonicModule,
 		RouterModule.forChild(routes),
-		SharedModule
+		SharedModule,
 	],
 	declarations: [
 		ProfilePage,
@@ -44,7 +44,7 @@ const routes: Routes = [
 		SupportComponent,
 		MyScoreComponent,
 		ExperienceComponent,
-		ServiceLocationComponent
+		ServiceLocationComponent,
 	],
 	entryComponents: [
 	]

@@ -13,7 +13,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
 		FormsModule,
 		PipesModule,
 		IonicSelectableModule,
-		ComponentsModule
+		ComponentsModule,
 	],
 	exports: [
 		ReactiveFormsModule,

@@ -35,39 +35,44 @@ export class VerifyPage implements OnInit {
 					cofirmationCode: this.verifyForm.get('cofirmationCode').value,
 				}).subscribe((res) => {
 					// Store Person
+					if (res.id === 0) {
+						localStorage.setItem('accessToken', res.accessToken.toString());
+						loading.dismiss();
+						this.navCtrl.navigateForward('/register');
+					} else {
+						this.global.httpPost('person/getPersonInfo', {
+							personId: res.id,
+						}, res.accessToken).subscribe((per) => {
+							const person = new SHPerson();
+							person.personId = res.id;
+							person.accessToken = res.accessToken;
+							person.areaId = per.areaId;
+							person.area = per.area;
+							person.picAddress = per.picAddress;
+							person.firstName = per.firstName;
+							person.lastName = per.lastName;
+							person.totalPoint = per.totalPoint;
+							person.code = per.code;
+							person.username = per.username;
+							person.email = per.email;
+							person.phone = per.phone;
+							person.address = per.address;
+							localStorage.setItem('personInfo', JSON.stringify(person));
 
-					this.global.httpPost('person/getPersonInfo', {
-						personId: res.id,
-					}, res.accessToken).subscribe((per) => {
-						const person = new SHPerson();
-						person.personId = res.id;
-						person.accessToken = res.accessToken;
-						person.areaId = per.areaId;
-						person.area = per.area;
-						person.picAddress = per.picAddress;
-						person.firstName = per.firstName;
-						person.lastName = per.lastName;
-						person.totalPoint = per.totalPoint;
-						person.code = per.code;
-						person.username = per.username;
-						person.email = per.email;
-						person.phone = per.phone;
-						person.address = per.address;
-						localStorage.setItem('personInfo', JSON.stringify(person));
+							loading.dismiss();
+							localStorage.setItem('isLogin', 'true');
+							this.global.isLoginBehavior().next(true);
+							this.global.menuBehavior().next(true);
+							localStorage.removeItem('mobileNo');
 
-						this.global.dismisLoading();
-						localStorage.setItem('isLogin', 'true');
-						this.global.isLoginBehavior().next(true);
-						this.global.menuBehavior().next(true);
-						localStorage.removeItem('mobileNo');
-
-						this.navCtrl.navigateForward('/page/home');
-					}, (error) => {
-						this.global.dismisLoading();
-						this.global.showError(error);
-					});
+							this.navCtrl.navigateRoot('/page/home');
+						}, (error) => {
+							loading.dismiss();
+							this.global.showError(error);
+						});
+					}
 				}, (error) => {
-					this.global.dismisLoading();
+					loading.dismiss();
 					this.global.showError(error);
 				});
 			});

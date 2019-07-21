@@ -1,0 +1,70 @@
+<ion-header class="ion-hide-lg-up">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="white" (click)="goBack()">
+				<ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>ثبت نام</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content">
+	<ion-button class="ion-hide-md-down" nav-pop (click)="goBack()" color="medium" fill="clear"> بازگشت <ion-icon
+			slot="start" name="arrow-back"></ion-icon>
+	</ion-button>
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>ثبت نام</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			<form [formGroup]="registerForm" (ngSubmit)="onRegister()" autocomplete="off">
+				<ion-grid>
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="floating">نام</ion-label>
+								<ion-input type="text" formControlName="firstName"></ion-input>
+							</ion-item>
+							<app-validator [control]="registerForm.controls['firstName']" [controlName]="'نام'">
+							</app-validator>
+						</ion-col>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="floating">نام خانوادگی</ion-label>
+								<ion-input type="text" formControlName="lastName"></ion-input>
+							</ion-item>
+							<app-validator [control]="registerForm.controls['lastName']" [controlName]="'نام خانوادگی'">
+							</app-validator>
+						</ion-col>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="floating">کد یا شماره معرف</ion-label>
+								<ion-input type="text" formControlName="reagentCode"></ion-input>
+							</ion-item>
+						</ion-col>
+						<ion-col size-md="9" size="12">
+							<ion-item lines="none">
+								<ion-label>قوانین شیراز سرویس را می پذیرم</ion-label>
+								<ion-checkbox slot="start" color="primary" value="1" formControlName="aggrement">
+								</ion-checkbox>
+							</ion-item>
+							<app-validator [control]="registerForm.controls['aggrement']" [controlName]="'قوانین'">
+							</app-validator>
+						</ion-col>
+						<ion-col size-md="3" size="12">
+							<div class="ion-text-left">
+								<a href="https://shiraz-service.ir/terms/" target="_blank">مطالعه کنید</a>
+							</div>
+						</ion-col>
+						<ion-col size-md="6" size="12">
+							<ion-button color="primary" type="submit" expand="full" [disabled]="!registerForm.valid">
+								تایید و ثبت نام</ion-button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

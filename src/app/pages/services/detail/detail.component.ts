@@ -13,6 +13,9 @@ export class DetailComponent implements OnInit {
 	constructor(private navCtrl: NavController) { }
 
 	ngOnInit() {
+	}
+
+	ionViewWillEnter() {
 		const service = JSON.parse(localStorage.getItem('service'));
 		this.service = new SHService();
 		this.service.basePrice = service._basePrice;
