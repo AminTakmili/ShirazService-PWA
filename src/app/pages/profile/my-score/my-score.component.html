@@ -22,11 +22,11 @@
     <ion-grid class="mt-30" no-padding>
         <ion-row align-items-center justify-content-center no-padding>
             <ion-col size="6">
-                <ion-button routerLink="/page/home/request-service/step-1" expand="block" color="grey-3"
+                <ion-button (click)="sendSms()" expand="block" color="grey-3"
                     class="btn-height-45 "> پیامک دعوت نامه </ion-button>
             </ion-col>
             <ion-col size="6">
-                <ion-button routerLink="/page/home/request-service/step-3" expand="block" color="green"
+                <ion-button (click)="share()" expand="block" color="green"
                     class="btn-height-45  mr-10"> به اشتراک بگذارید </ion-button>
             </ion-col>
         </ion-row>

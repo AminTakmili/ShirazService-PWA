@@ -15,12 +15,11 @@ export class MyrequestPage implements OnInit {
 	@ViewChild('segment') segment: ElementRef;
 	@ViewChild('segment2') segment2: ElementRef;
 	segmentStatus = [
-		{ id: 0, name: 'آمار کلی', icon: 'pie' },
-		{ id: 1, name: 'در انتظار متخصص', icon: 'time' },
-		{ id: 2, name: 'منتظر تایید', icon: 'hammer' },
-		{ id: 3, name: 'پذیرفته شده', icon: 'checkmark' },
-		{ id: 4, name: 'خاتمه یافته', icon: 'done-all' },
-		{ id: 5, name: 'لغو شده', icon: 'pin' },
+		{ id: 0, name: 'در انتظار متخصص', icon: 'time' },
+		{ id: 1, name: 'منتظر تایید', icon: 'hammer' },
+		{ id: 2, name: 'پذیرفته شده', icon: 'checkmark' },
+		{ id: 3, name: 'خاتمه یافته', icon: 'done-all' },
+		{ id: 4, name: 'لغو شده', icon: 'pin' },
 	];
 	chart: Chart;
 	segmentSelected: any = 0;
@@ -44,79 +43,26 @@ export class MyrequestPage implements OnInit {
 
 	async ionViewWillEnter() {
 		if (localStorage.getItem('requestAdd') !== null) {
-			await this.slides.slideTo(1);
+			await this.slides.slideTo(0);
 			localStorage.removeItem('requestAdd');
 		}
 		if (localStorage.getItem('finishRequest') !== null) {
-			await this.slides.slideTo(4);
+			await this.slides.slideTo(3);
 			localStorage.removeItem('finishRequest');
 		}
 		if (localStorage.getItem('cancelRequest') !== null) {
-			await this.slides.slideTo(5);
+			await this.slides.slideTo(4);
 			localStorage.removeItem('cancelRequest');
 		}
 		if (localStorage.getItem('acceptRequest') !== null) {
-			await this.slides.slideTo(3);
+			await this.slides.slideTo(2);
 			localStorage.removeItem('acceptRequest');
 		}
-		this.chart = new Chart({
-			chart: {
-				plotBackgroundColor: null,
-				plotBorderWidth: null,
-				plotShadow: false,
-				type: 'pie',
-				style: {
-					fontFamily: 'iransans',
-					fontWeight: 'normal',
-					backgroundColor: null,
-				}
-			},
-			title: {
-				text: '',
-			},
-			plotOptions: {
-				pie: {
-					allowPointSelect: true,
-					cursor: 'pointer',
-					startAngle: -95,
-					endAngle: 95,
-					center: ['50%', '90%'],
-					size: '110%',
-					dataLabels: {
-						enabled: true,
-						format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-						style: {
-							color: '{point.color}'
-						}
-					}
-				}
-			},
-			legend: {
-				labelFormat: '{name} | {y} ',
-				layout: 'horizontal',
-				align: 'center',
-				verticalAlign: 'bottom'
-			},
-
-			series: [{
-				type: 'pie',
-				name: 'گرازش وضعیت درخواست ها',
-				innerSize: '75%',
-				showInLegend: true,
-				keys: ['name', 'y', 'color', 'label'],
-				data: [
-					['منتظر متخصص', 20, '#4286F5', 'منتظر متخصص'],
-					['منتظر تایید', 20, '#ff77a9', 'منتظر تایید'],
-					['پذیرش شده', 20, '#ffc107', 'پذیرش شده'],
-					['خاتمه یافته', 30, '#7cb342', 'خاتمه یافته'],
-					['لغو شده', 10, '#EA4235', 'لغو شده'],
-				],
-				dataLabels: {
-					enabled: true,
-					format: '{point.label}'
-				},
-			}]
-		});
+		if (await this.slides.getActiveIndex() === 0) {
+			this.type5 = [];
+			this.tabLoading = true;
+			this.getRequest(1);
+		}
 	}
 
 	async ionSelect(index: number) {
@@ -177,27 +123,27 @@ export class MyrequestPage implements OnInit {
 		const currentCategory = this.segmentStatus[currentIndex];
 
 		switch (currentCategory.id) {
-			case 1:
+			case 0:
 				this.type1 = [];
 				this.tabLoading = true;
 				this.getRequest(1);
 				break;
-			case 2:
+			case 1:
 				this.type2 = [];
 				this.tabLoading = true;
 				this.getRequest(2);
 				break;
-			case 3:
+			case 2:
 				this.type3 = [];
 				this.tabLoading = true;
 				this.getRequest(3);
 				break;
-			case 4:
+			case 3:
 				this.type4 = [];
 				this.tabLoading = true;
 				this.getRequest(4);
 				break;
-			case 5:
+			case 4:
 				this.type5 = [];
 				this.tabLoading = true;
 				this.getRequest(5);

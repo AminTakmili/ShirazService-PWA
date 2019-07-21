@@ -8,7 +8,7 @@ const routes: Routes = [
 	{ path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule', canActivate: [LoginGuard] },
 	{ path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [AppGuard] },
 	{ path: 'verify', loadChildren: './pages/verify/verify.module#VerifyPageModule', canActivate: [VerifyGuard] },
-
+	{ path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule', canActivate: [AppGuard] },
 ];
 @NgModule({
 	imports: [
